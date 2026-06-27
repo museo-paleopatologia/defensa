@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Defensa TFG · MUVIPAT</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+
+<style>
+:root{
+  --green:#4a7729;
+  --green-soft:#eef3e6;
+  --blue:#0077c8;
+  --blue-dark:#1c5d91;
+  --blue-soft:#e7f0f8;
+  --bg:#f6f4ee;
+  --paper:#fffdf9;
+  --ink:#23241f;
+  --ink-soft:#3a3b34;
+  --gray:#6f6b61;
+  --gray-line:#d8d3c7;
+  --shadow:6px 6px 0 rgba(28,93,145,.12);
+  --shadow-sm:4px 4px 0 rgba(28,93,145,.12);
+  --shadow-green:6px 6px 0 rgba(74,119,41,.14);
+}
+
+/* ---------- Reveal base ---------- */
+.reveal{ font-family:'Manrope',sans-serif; color:var(--ink); }
+.reveal .slides{ text-align:left; }
+.reveal .slides section{
+  height:900px; box-sizing:border-box;
+  background:var(--bg);
+  padding:0;
+}
+.reveal h1,.reveal h2,.reveal h3{
+  font-family:'Space Grotesk',sans-serif; color:var(--ink);
+  text-transform:none; letter-spacing:-.01em; margin:0; line-height:1.04; font-weight:700;
+}
+.reveal p{ margin:0; line-height:1.4; }
+.reveal .progress{ color:var(--green); height:5px; }
+.reveal .controls{ color:var(--blue-dark); }
+.reveal .controls button{ opacity:.55; }
+
+/* slide inner frame */
+.s{ height:900px; box-sizing:border-box; padding:78px 92px 64px; display:flex; flex-direction:column; }
+.s.center{ justify-content:center; }
+
+/* ---------- section badge (top) ---------- */
+.section-tag{
+  position:fixed; top:26px; left:50%; transform:translateX(-50%);
+  z-index:60; display:none; align-items:center; gap:9px;
+  font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--blue-dark);
+  background:var(--paper); border:2px solid var(--blue-dark); border-radius:999px;
+  padding:8px 18px 8px 14px; box-shadow:3px 3px 0 rgba(28,93,145,.15);
+}
+.section-tag .dot{ width:9px; height:9px; border-radius:50%; background:var(--green); display:inline-block; }
+
+/* ---------- shared bits ---------- */
+.kicker{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--green); display:flex; align-items:center; gap:12px; }
+.kicker .num{ font-family:'JetBrains Mono',monospace; color:var(--blue-dark); font-weight:500; }
+.kicker::after{ content:""; flex:0 0 56px; height:3px; background:var(--green); border-radius:2px; }
+
+.title-xl{ font-size:60px; margin-top:18px; }
+.title-lg{ font-size:52px; margin-top:18px; }
+.lead{ font-size:27px; color:var(--ink-soft); max-width:1100px; margin-top:18px; line-height:1.45; }
+
+.card{ background:var(--paper); border:2.5px solid var(--ink); border-radius:16px; box-shadow:var(--shadow);
+  padding:30px 30px; display:flex; flex-direction:column; gap:12px; }
+.card h3{ font-size:24px; }
+.card p{ font-size:20px; color:var(--gray); }
+.card .tag{ font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--blue-dark); }
+
+.chip{ display:inline-flex; align-items:center; gap:10px; background:var(--paper);
+  border:2px solid var(--ink); border-radius:999px; padding:11px 20px; font-weight:600; font-size:20px;
+  box-shadow:var(--shadow-sm); }
+.chip .b{ width:11px;height:11px;border-radius:50%; }
+
+.banner{ background:var(--ink); color:#fff; border-radius:16px; padding:26px 34px;
+  font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:27px; line-height:1.3;
+  box-shadow:6px 6px 0 rgba(74,119,41,.30); }
+.banner em{ font-style:normal; color:#c9e29f; }
+
+/* model-viewer frames */
+.ph{ position:relative; border:2.5px solid var(--ink); border-radius:16px; overflow:hidden;
+  background:radial-gradient(circle at 50% 38%, #fbfaf6, #efece4 78%);
+  box-shadow:var(--shadow); }
+.ph model-viewer{ width:100%; height:100%; display:block; background:transparent;
+  --poster-color:transparent; --progress-bar-color:var(--green); }
+.ph .lab{ position:absolute; left:14px; bottom:14px; z-index:3; font-family:'JetBrains Mono',monospace; font-size:14px;
+  background:var(--paper); border:1.5px solid var(--ink); border-radius:8px; padding:6px 11px; color:var(--ink);
+  pointer-events:none; }
+.ph .corner{ position:absolute; top:0; right:0; z-index:3; background:var(--green); color:#fff;
+  font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.08em; padding:5px 11px;
+  border-bottom-left-radius:12px; pointer-events:none; }
+
+/* institutional logos */
+.logos{ display:flex; align-items:center; gap:24px; }
+.logos img{ width:auto; display:block; }
+.logos .sep{ width:2px; height:40px; background:var(--gray-line); }
+
+/* fillable image frames (point src to a file in assets/) */
+.imgph{ position:relative; border:2.5px solid var(--ink); border-radius:16px; overflow:hidden;
+  background:repeating-linear-gradient(135deg,#e9e5db 0 14px,#f0ece2 14px 28px); box-shadow:var(--shadow); }
+.imgph img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+.imgph .hint{ position:absolute; inset:0; z-index:1; display:flex; align-items:center; justify-content:center;
+  text-align:center; font-family:'JetBrains Mono',monospace; font-size:15px; color:var(--gray); padding:24px; line-height:1.5; }
+.imgph .corner{ position:absolute; top:0; right:0; z-index:3; background:var(--blue-dark); color:#fff;
+  font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.08em; padding:5px 11px;
+  border-bottom-left-radius:12px; }
+
+/* objetivos · vertical list variant */
+.obj-list{ display:flex; flex-direction:column; gap:16px; }
+.obj-row{ display:flex; gap:20px; align-items:center; padding:16px 22px; background:var(--paper);
+  border:2px solid var(--ink); border-radius:13px; box-shadow:var(--shadow-sm); }
+.obj-row .n{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:32px; color:var(--green);
+  line-height:1; flex:0 0 48px; }
+.obj-row.alt .n{ color:var(--blue); }
+.obj-row .tx h3{ font-size:21px; line-height:1.12; }
+.obj-row .tx p{ font-size:16px; color:var(--gray); margin-top:4px; }
+
+/* benefit mini-cards (discusión) */
+.bgrid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.bcard{ background:var(--paper); border:2px solid var(--ink); border-radius:13px; padding:18px 20px;
+  box-shadow:var(--shadow-sm); display:flex; flex-direction:column; gap:7px; }
+.bcard h3{ font-size:20px; display:flex; align-items:center; gap:10px; }
+.bcard h3 .b{ width:11px; height:11px; border-radius:50%; }
+.bcard p{ font-size:15px; color:var(--gray); line-height:1.35; }
+
+/* ===================================================== PORTADA */
+.cover{ height:900px; display:grid; grid-template-columns:1.15fr .85fr; }
+.cover-left{ padding:96px 0 80px 92px; display:flex; flex-direction:column; justify-content:center; }
+.cover-eyebrow{ font-family:'JetBrains Mono',monospace; font-size:16px; letter-spacing:.1em; color:var(--blue-dark);
+  text-transform:uppercase; }
+.cover h1{ font-size:62px; line-height:1.04; margin-top:24px; max-width:760px; }
+.cover h1 .hl{ color:var(--green); }
+.cover-sub{ font-size:25px; color:var(--ink-soft); margin-top:26px; max-width:680px; line-height:1.45; }
+.cover-meta{ margin-top:46px; display:flex; flex-direction:column; gap:6px; }
+.cover-meta .name{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:26px; color:var(--ink); }
+.cover-meta .aff{ font-size:19px; color:var(--gray); }
+.cover-meta .aff b{ color:var(--blue-dark); font-weight:600; }
+.cover-right{ position:relative; padding:64px 64px 64px 36px; display:flex; flex-direction:column; gap:26px; justify-content:center; }
+.cover-right::before{ content:""; position:absolute; inset:0; background:
+   radial-gradient(circle at 70% 30%, rgba(0,119,200,.10), transparent 60%); }
+.cover .ph.m1{ height:330px; transform:rotate(-2deg); }
+.cover .ph.m2{ height:300px; transform:rotate(2.2deg); margin-left:60px; box-shadow:var(--shadow-green); border-color:var(--ink); }
+.brand-mark{ position:absolute; top:40px; right:64px; font-family:'Space Grotesk',sans-serif; font-weight:700;
+  font-size:20px; letter-spacing:.18em; color:var(--blue-dark); }
+
+/* ===================================================== grids */
+.grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; margin-top:42px; }
+.grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:34px; margin-top:40px; }
+.grid-5{ display:grid; grid-template-columns:repeat(5,1fr); gap:18px; margin-top:44px; }
+
+/* objetivos */
+.obj{ background:var(--paper); border:2.5px solid var(--ink); border-radius:16px; padding:24px 22px;
+  display:flex; flex-direction:column; gap:14px; box-shadow:var(--shadow); }
+.obj .n{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:40px; color:var(--green);
+  line-height:1; }
+.obj h3{ font-size:21px; line-height:1.18; }
+.obj.alt .n{ color:var(--blue); }
+
+/* metodología flow */
+.flow{ display:flex; align-items:stretch; gap:0; margin-top:46px; }
+.step{ flex:1; background:var(--paper); border:2.5px solid var(--ink); border-radius:14px; padding:22px 16px;
+  display:flex; flex-direction:column; gap:10px; box-shadow:var(--shadow-sm); position:relative; }
+.step .si{ font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--blue-dark); }
+.step h3{ font-size:19px; line-height:1.15; }
+.arrow{ flex:0 0 40px; display:flex; align-items:center; justify-content:center; color:var(--green);
+  font-size:30px; font-weight:700; }
+.crit{ display:flex; gap:14px; flex-wrap:wrap; margin-top:40px; }
+
+/* desarrollo */
+.layers{ display:flex; flex-direction:column; gap:14px; }
+.layer{ background:var(--paper); border:2.5px solid var(--ink); border-radius:13px; padding:18px 24px;
+  display:flex; align-items:center; gap:18px; box-shadow:var(--shadow-sm); }
+.layer .lk{ font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--blue-dark); flex:0 0 132px; }
+.layer h3{ font-size:21px; }
+.layer.accent{ background:var(--green-soft); }
+.layer.accent2{ background:var(--blue-soft); }
+.notes{ display:flex; flex-direction:column; gap:16px; }
+.note{ display:flex; gap:14px; align-items:flex-start; font-size:20px; color:var(--ink-soft); }
+.note .bullet{ flex:0 0 12px; width:12px; height:12px; border-radius:3px; background:var(--green); margin-top:7px; }
+.ai-callout{ margin-top:8px; background:var(--ink); color:#fff; border-radius:14px; padding:20px 24px;
+  font-size:19px; line-height:1.4; box-shadow:5px 5px 0 rgba(0,119,200,.30); }
+.ai-callout b{ color:#9fd0f2; }
+
+/* recorrido list */
+.route{ display:grid; grid-template-columns:1fr 1fr; gap:18px 40px; margin-top:40px; }
+.route-item{ display:flex; align-items:center; gap:20px; padding:16px 22px; background:var(--paper);
+  border:2px solid var(--ink); border-radius:13px; box-shadow:var(--shadow-sm); }
+.route-item .rn{ font-family:'JetBrains Mono',monospace; font-size:17px; color:var(--blue-dark);
+  flex:0 0 34px; font-weight:500; }
+.route-item h3{ font-size:21px; }
+.route-item .sub{ font-size:16px; color:var(--gray); margin-left:auto; }
+
+/* ===================================================== DEMO slide */
+.demo{ height:900px; box-sizing:border-box; padding:54px 64px 48px; display:flex; flex-direction:column; }
+.demo-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
+.demo-head .t{ display:flex; align-items:baseline; gap:16px; }
+.demo-head .t h2{ font-size:28px; }
+.demo-head .t .mono{ font-family:'JetBrains Mono',monospace; font-size:15px; color:var(--gray); }
+.manual{ display:flex; align-items:center; gap:11px; background:var(--green-soft); border:2px solid var(--green);
+  border-radius:999px; padding:9px 18px; font-weight:600; font-size:16px; color:var(--green); }
+.manual .pulse{ width:11px; height:11px; border-radius:50%; background:var(--green); animation:pl 1.6s infinite; }
+@keyframes pl{ 0%,100%{ box-shadow:0 0 0 0 rgba(74,119,41,.45);} 50%{ box-shadow:0 0 0 7px rgba(74,119,41,0);} }
+
+.demo-body{ flex:1; display:grid; grid-template-columns:1fr 360px; gap:26px; min-height:0; }
+
+/* browser window */
+.browser{ border:2.5px solid var(--ink); border-radius:16px; overflow:hidden; box-shadow:var(--shadow);
+  display:flex; flex-direction:column; background:var(--paper); min-height:0; }
+.browser-bar{ flex:0 0 46px; display:flex; align-items:center; gap:14px; padding:0 18px;
+  background:#ece8df; border-bottom:2.5px solid var(--ink); }
+.browser-bar .dots{ display:flex; gap:8px; }
+.browser-bar .dots i{ width:13px; height:13px; border-radius:50%; display:block; }
+.browser-bar .url{ flex:1; background:var(--paper); border:1.5px solid var(--gray-line); border-radius:8px;
+  padding:7px 14px; font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--ink-soft);
+  display:flex; align-items:center; gap:9px; }
+.browser-bar .url .lock{ color:var(--green); }
+.browser iframe{ flex:1; width:100%; border:0; background:#fff; }
+
+/* fragment text column */
+.demo-aside{ display:flex; flex-direction:column; min-height:0; }
+.aside-frame{ flex:1; position:relative; background:var(--paper); border:2.5px solid var(--ink);
+  border-radius:16px; box-shadow:var(--shadow-green); }
+.frag{ position:absolute; inset:0; padding:34px 32px; display:flex; flex-direction:column; justify-content:center; }
+.frag .fnum{ font-family:'JetBrains Mono',monospace; font-size:15px; color:var(--blue-dark); letter-spacing:.05em; }
+.frag h3{ font-size:30px; color:var(--green); margin-top:14px; line-height:1.1; }
+.frag p{ font-size:22px; color:var(--ink-soft); margin-top:16px; line-height:1.42; }
+.frag .bar{ width:48px; height:5px; border-radius:3px; background:var(--green); margin-top:22px; }
+
+/* discusión */
+.profiles{ display:flex; gap:14px; flex-wrap:wrap; margin-top:6px; }
+
+/* limitaciones cols */
+.two-col{ display:grid; grid-template-columns:1fr 1fr; gap:34px; margin-top:38px; }
+.col h3.colhead{ font-family:'Space Grotesk',sans-serif; font-size:23px; display:flex; align-items:center; gap:12px;
+  margin-bottom:20px; }
+.col .pill{ font-family:'JetBrains Mono',monospace; font-size:13px; padding:5px 12px; border-radius:999px; }
+.list-clean{ display:flex; flex-direction:column; gap:14px; }
+.li{ display:flex; gap:14px; align-items:flex-start; font-size:21px; color:var(--ink-soft); }
+.li .mk{ flex:0 0 22px; height:22px; margin-top:1px; border-radius:6px; display:flex; align-items:center;
+  justify-content:center; font-family:'JetBrains Mono',monospace; font-size:13px; color:#fff; }
+
+/* conclusiones */
+.concl{ display:flex; flex-direction:column; gap:20px; margin-top:36px; }
+.concl-item{ display:flex; gap:24px; align-items:flex-start; background:var(--paper); border:2.5px solid var(--ink);
+  border-radius:16px; padding:26px 30px; box-shadow:var(--shadow); }
+.concl-item .cn{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:38px; color:var(--green); line-height:1; flex:0 0 56px; }
+.concl-item p{ font-size:23px; color:var(--ink-soft); line-height:1.4; }
+.concl-item:nth-child(2) .cn{ color:var(--blue); }
+.concl-item:nth-child(3) .cn{ color:var(--blue-dark); }
+
+/* gracias */
+.thanks{ height:900px; display:flex; flex-direction:column; justify-content:center; align-items:center;
+  text-align:center; position:relative; overflow:hidden; }
+.thanks .deco{ position:absolute; z-index:1; opacity:.96; }
+.thanks .deco model-viewer{ width:100%; height:100%; display:block; background:transparent; --poster-color:transparent; }
+.thanks .deco.r{ width:340px; height:340px; right:48px; top:90px; transform:rotate(7deg); }
+.thanks .deco.l{ width:320px; height:320px; left:48px; bottom:70px; transform:rotate(-7deg); }
+.thanks .inner{ position:relative; z-index:2; }
+.thanks h1{ font-size:104px; color:var(--ink); }
+.thanks .q{ font-size:38px; color:var(--green); font-family:'Space Grotesk',sans-serif; font-weight:600; margin-top:6px; }
+.thanks .who{ margin-top:44px; font-size:24px; color:var(--ink-soft); }
+.thanks .brand{ margin-top:14px; font-family:'Space Grotesk',sans-serif; font-weight:700; letter-spacing:.22em;
+  font-size:22px; color:var(--blue-dark); }
+.thanks .aff2{ margin-top:8px; font-size:17px; color:var(--gray); }
+/* ===================================================== PROBLEM slide */
+.problem-slide-sub{ font-size:27px; color:var(--ink-soft); max-width:1180px; margin-top:16px; line-height:1.4; }
+.problem-slide-flow{ display:flex; align-items:stretch; gap:22px; margin-top:50px; flex:1; min-height:0; }
+.problem-slide-block{ display:flex; flex-direction:column; justify-content:center; gap:14px; }
+.problem-slide-label{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14px;
+  letter-spacing:.15em; text-transform:uppercase; display:flex; align-items:center; gap:10px; }
+.problem-slide-label .sq{ width:16px; height:16px; border-radius:5px; display:inline-block; }
+.problem-slide-origin{ flex:0 0 320px; background:var(--paper); border:2.5px solid var(--ink);
+  border-radius:16px; box-shadow:var(--shadow); padding:32px 30px; }
+.problem-slide-origin .problem-slide-label{ color:var(--green); }
+.problem-slide-origin h3{ font-family:'Space Grotesk',sans-serif; font-size:30px; color:var(--ink); line-height:1.06; }
+.problem-slide-origin p{ font-size:19px; color:var(--gray); line-height:1.42; }
+.problem-slide-arrow{ flex:0 0 44px; display:flex; align-items:center; justify-content:center;
+  color:var(--green); font-size:36px; font-weight:700; }
+.problem-slide-factors{ flex:1; display:flex; flex-direction:column; justify-content:center; gap:16px; }
+.problem-slide-factors-cap{ font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:.08em;
+  color:var(--gray); text-transform:uppercase; text-align:center; }
+.problem-slide-node{ background:var(--paper); border:2px solid var(--ink); border-radius:12px;
+  box-shadow:var(--shadow-sm); padding:19px 24px; display:flex; align-items:center; gap:16px;
+  font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:24px; color:var(--ink); }
+.problem-slide-node .dot{ width:13px; height:13px; border-radius:50%; flex:0 0 13px; }
+.problem-slide-consequence{ flex:0 0 392px; background:var(--blue-soft); border:3px solid var(--blue-dark);
+  border-radius:18px; box-shadow:7px 7px 0 rgba(28,93,145,.18); padding:38px 36px; }
+.problem-slide-consequence .problem-slide-label{ color:var(--blue-dark); }
+.problem-slide-consequence .problem-slide-label .sq{ background:var(--blue-dark); }
+.problem-slide-consequence h3{ font-family:'Space Grotesk',sans-serif; font-size:40px; color:var(--blue-dark); line-height:1.04; }
+.problem-slide-consequence p{ font-size:23px; color:var(--ink-soft); line-height:1.4; margin-top:2px; }
+
+/* ===================================================== SLIDE 3 · PUENTE (diagrama) */
+.bridge-slide-sub{ font-size:24px; color:var(--ink-soft); max-width:1200px; margin-top:14px; line-height:1.4; }
+.bridge-slide-flow{ display:grid; grid-template-columns:230px 46px 1fr 46px 250px; gap:0; align-items:stretch;
+  margin-top:26px; flex:1; min-height:0; }
+.bridge-slide-col{ display:flex; flex-direction:column; min-height:0; }
+.bridge-slide-arrowcol{ display:flex; align-items:center; justify-content:center; color:var(--green);
+  font-size:30px; font-weight:700; }
+.bridge-slide-cap{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px;
+  letter-spacing:.15em; text-transform:uppercase; display:flex; align-items:center; gap:9px; margin-bottom:12px; }
+.bridge-slide-cap .sq{ width:14px; height:14px; border-radius:4px; display:inline-block; }
+.bridge-slide-barriers{ flex:1; background:var(--paper); border:2.5px solid var(--ink); border-radius:16px;
+  box-shadow:var(--shadow); padding:26px 24px; display:flex; flex-direction:column; align-items:center;
+  justify-content:center; gap:18px; text-align:center; }
+.bridge-slide-barriers .ico{ width:74px; height:74px; }
+.bridge-slide-barriers h3{ font-family:'Space Grotesk',sans-serif; font-size:24px; color:var(--ink); line-height:1.1; }
+.bridge-slide-barriers p{ font-size:17px; color:var(--gray); line-height:1.34; }
+.bridge-slide-nodes{ flex:1; display:flex; flex-direction:column; gap:18px; min-height:0; }
+.bridge-slide-node{ flex:1; background:var(--paper); border:2.5px solid var(--ink); border-radius:16px;
+  box-shadow:var(--shadow); padding:20px 26px; display:flex; align-items:center; gap:22px; }
+.bridge-slide-node .ico{ width:58px; height:58px; flex:0 0 58px; }
+.bridge-slide-node .body h3{ font-family:'Space Grotesk',sans-serif; font-size:27px; line-height:1.05; }
+.bridge-slide-node .body .ideas{ display:flex; flex-wrap:wrap; gap:8px; margin-top:11px; }
+.bridge-slide-node .body .ideas span{ font-size:17px; font-weight:600; color:var(--ink-soft);
+  background:var(--bg); border:1.5px solid var(--gray-line); border-radius:999px; padding:6px 14px; }
+.bridge-slide-node.g{ border-left:7px solid var(--green); }
+.bridge-slide-node.b{ border-left:7px solid var(--blue); }
+.bridge-slide-ante{ flex:1; display:flex; flex-direction:column; gap:11px; }
+.bridge-slide-ante .item{ flex:1; display:flex; align-items:center; gap:14px; background:var(--paper);
+  border:2px solid var(--ink); border-radius:12px; box-shadow:var(--shadow-sm); padding:0 18px;
+  font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:18px; color:var(--ink); }
+.bridge-slide-ante .item .ico{ width:30px; height:30px; flex:0 0 30px; }
+.bridge-slide-muvipat{ display:flex; align-items:center; gap:22px; margin-top:22px; background:var(--ink); color:#fff;
+  border-radius:16px; padding:22px 32px; box-shadow:6px 6px 0 rgba(74,119,41,.28); }
+.bridge-slide-muvipat .conv{ display:flex; align-items:center; gap:10px; color:#c9e29f; font-size:26px; font-weight:700; flex:0 0 auto; }
+.bridge-slide-muvipat .name{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:34px; letter-spacing:.02em; flex:0 0 auto; }
+.bridge-slide-muvipat .desc{ font-size:22px; color:#e7ece2; line-height:1.28; }
+.bridge-slide-muvipat .desc b{ color:#c9e29f; font-weight:700; }
+
+/* ===================================================== SLIDE 4 · OBJETIVOS (general → específicos) */
+.objectives-slide-cols{ display:grid; grid-template-columns:.92fr 1.08fr; gap:38px; margin-top:36px; flex:1; min-height:0; }
+.objectives-slide-label{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14px;
+  letter-spacing:.15em; text-transform:uppercase; display:flex; align-items:center; gap:10px; }
+.objectives-slide-label .sq{ width:16px; height:16px; border-radius:5px; display:inline-block; }
+.objectives-slide-general{ display:flex; flex-direction:column; gap:20px; background:var(--paper);
+  border:2.5px solid var(--ink); border-radius:16px; box-shadow:var(--shadow); padding:34px 32px; }
+.objectives-slide-general .objectives-slide-label{ color:var(--green); }
+.objectives-slide-general p{ font-family:'Manrope',sans-serif; font-size:25px; font-weight:500;
+  color:var(--ink); line-height:1.5; }
+.objectives-slide-shot{ position:relative; flex:1; min-height:120px; margin-top:auto; overflow:hidden;
+  border:2px solid var(--ink); border-radius:12px; box-shadow:var(--shadow-sm);
+  background:repeating-linear-gradient(135deg,#e9e5db 0 14px,#f0ece2 14px 28px); }
+.objectives-slide-shot img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+.objectives-slide-shot .hint{ position:absolute; inset:0; z-index:1; display:flex; align-items:center;
+  justify-content:center; text-align:center; font-family:'JetBrains Mono',monospace; font-size:13px;
+  color:var(--gray); padding:18px; }
+.objectives-slide-listcol{ display:flex; flex-direction:column; }
+.objectives-slide-listcol .objectives-slide-label{ color:var(--blue-dark); margin-bottom:14px; }
+.objectives-slide-items{ display:flex; flex-direction:column; gap:14px; flex:1; }
+.objectives-slide-item{ display:flex; align-items:center; gap:22px; padding:17px 26px; background:var(--paper);
+  border:2px solid var(--ink); border-radius:13px; box-shadow:var(--shadow-sm); flex:1; }
+.objectives-slide-item .n{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px;
+  line-height:1; flex:0 0 48px; }
+.objectives-slide-item h3{ font-size:23px; line-height:1.12; }
+
+/* ===================================================== SLIDE 5 · METODOLOGÍA (fases + franja + imagen) */
+.method-slide-flow{ display:flex; align-items:stretch; gap:0; margin-top:34px; }
+.method-slide-step{ flex:1; background:var(--paper); border:2.5px solid var(--ink); border-radius:13px;
+  padding:16px 12px; display:flex; flex-direction:column; gap:8px; box-shadow:var(--shadow-sm); }
+.method-slide-step .si{ font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--blue-dark); }
+.method-slide-step h3{ font-family:'Space Grotesk',sans-serif; font-size:18px; line-height:1.1; }
+.method-slide-step.hl{ border-color:var(--blue); border-width:3px; background:var(--blue-soft); }
+.method-slide-step.hl .si{ color:var(--blue); }
+.method-slide-step.end{ background:var(--green-soft); }
+.method-slide-arrow{ flex:0 0 30px; display:flex; align-items:center; justify-content:center;
+  color:var(--green); font-size:24px; font-weight:700; }
+.method-slide-stage{ display:flex; flex-direction:column; gap:18px; flex:1; min-height:0; margin-top:22px; }
+.method-slide-strip{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.method-slide-callout{ background:var(--paper); border:2px solid var(--ink); border-radius:12px;
+  box-shadow:var(--shadow-sm); padding:13px 18px; }
+.method-slide-callout .co-head{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:17px; color:var(--ink);
+  display:flex; align-items:center; gap:10px; margin-bottom:5px; }
+.method-slide-callout .co-head .sq{ width:13px; height:13px; border-radius:4px; flex:0 0 13px; }
+.method-slide-callout p{ font-size:15.5px; color:var(--ink-soft); line-height:1.32; }
+.method-slide-callout p b{ color:var(--blue-dark); font-weight:700; }
+.method-slide-figure{ position:relative; flex:1; min-height:0; border:2.5px solid var(--ink); border-radius:16px;
+  overflow:hidden; box-shadow:var(--shadow);
+  background:repeating-linear-gradient(135deg,#e9e5db 0 14px,#f0ece2 14px 28px); }
+.method-slide-figure img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+
+/* ===================================================== SLIDE 6 · DESARROLLO (flujo de trabajo) */
+.wf6-sub{ font-size:24px; color:var(--ink-soft); max-width:1200px; margin-top:14px; line-height:1.4; }
+.wf6-flow{ display:flex; align-items:stretch; gap:0; margin-top:36px; flex:1; min-height:0; }
+.wf6-node{ flex:1; background:var(--paper); border:2.5px solid var(--ink); border-radius:14px; box-shadow:var(--shadow-sm);
+  padding:20px 16px; display:flex; flex-direction:column; gap:10px; justify-content:center; }
+.wf6-node .wf6-n{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px; line-height:1; }
+.wf6-node h3{ font-family:'Space Grotesk',sans-serif; font-size:19px; line-height:1.1; }
+.wf6-node p{ font-size:15px; color:var(--gray); line-height:1.32; }
+.wf6-node p.mono{ font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--blue-dark); }
+.wf6-node.hl{ border-width:3px; border-color:var(--blue-dark); background:var(--blue-soft); }
+.wf6-link{ flex:0 0 28px; display:flex; align-items:center; justify-content:center; color:var(--green);
+  font-size:24px; font-weight:700; }
+.wf6-note{ display:flex; align-items:center; gap:14px; margin-top:20px; background:var(--blue-soft);
+  border:1.5px solid #cdd9e6; border-radius:12px; padding:12px 20px; }
+.wf6-note .tag{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--blue-dark); border:1.5px solid var(--blue-dark); border-radius:999px; padding:6px 13px; flex:0 0 auto; }
+.wf6-note p{ font-size:18px; color:var(--ink-soft); line-height:1.35; }
+.wf6-synth{ display:flex; align-items:center; gap:16px; margin-top:14px; background:var(--ink); color:#fff;
+  border-radius:14px; padding:18px 26px; box-shadow:5px 5px 0 rgba(74,119,41,.28); }
+.wf6-synth .dot{ width:14px; height:14px; border-radius:50%; background:#c9e29f; flex:0 0 14px; }
+.wf6-synth p{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:21px; line-height:1.28; }
+.wf6-synth p b{ color:#c9e29f; font-weight:700; }
+
+/* discusión · síntesis radial */
+.disc3-stage{ position:relative; flex:1; min-height:0; margin-top:24px; }
+.disc3-svg{ position:absolute; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+.disc3-hub{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:3;
+  width:300px; background:var(--ink); color:#fff; border:2.5px solid var(--ink); border-radius:18px;
+  box-shadow:6px 6px 0 rgba(74,119,41,.30); padding:26px 28px; text-align:center;
+  display:flex; flex-direction:column; gap:6px; }
+.disc3-hub .name{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:40px; letter-spacing:.03em; }
+.disc3-hub .sub{ font-size:17px; color:#c9e29f; line-height:1.25; }
+.disc3-card{ position:absolute; z-index:2; width:360px; background:var(--paper); border:2.5px solid var(--ink);
+  border-radius:14px; box-shadow:var(--shadow); padding:18px 22px; display:flex; flex-direction:column; gap:8px; }
+.disc3-card h4{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:21px; color:var(--ink);
+  line-height:1.08; display:flex; align-items:center; gap:11px; }
+.disc3-card h4 .sq{ width:15px; height:15px; border-radius:5px; flex:0 0 15px; }
+.disc3-card p{ font-size:17px; color:var(--gray); line-height:1.32; }
+.disc3-card.top{ left:50%; top:0; transform:translateX(-50%); }
+.disc3-card.bl{ left:0; bottom:0; }
+.disc3-card.br{ right:0; bottom:0; }
+.disc3-caution{ display:flex; align-items:center; gap:14px; margin-top:18px; background:var(--blue-soft);
+  border:1.5px solid #cdd9e6; border-radius:12px; padding:13px 22px; }
+.disc3-caution .tag{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--blue-dark); border:1.5px solid var(--blue-dark); border-radius:999px; padding:6px 13px; flex:0 0 auto; }
+.disc3-caution p{ font-size:18px; color:var(--ink-soft); line-height:1.34; }
+
+/* ===================================================== SLIDE 10 · LIMITACIONES (pares) */
+.limitations-slide-headrow{ display:grid; grid-template-columns:1fr 56px 1fr; margin-top:32px; }
+.limitations-slide-h{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:14px;
+  letter-spacing:.15em; text-transform:uppercase; display:flex; align-items:center; gap:10px; }
+.limitations-slide-h .sq{ width:16px; height:16px; border-radius:5px; display:inline-block; }
+.limitations-slide-h.lim{ color:var(--gray); }
+.limitations-slide-h.fut{ color:var(--green); }
+.limitations-slide-grid{ display:flex; flex-direction:column; gap:14px; margin-top:14px; flex:1; min-height:0; }
+.limitations-slide-row{ display:grid; grid-template-columns:1fr 56px 1fr; align-items:stretch; flex:1; }
+.limitations-slide-cell{ display:flex; align-items:center; gap:14px; border-radius:12px; padding:0 24px;
+  font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:21px; line-height:1.14; box-shadow:var(--shadow-sm); }
+.limitations-slide-cell .m{ width:13px; height:13px; border-radius:50%; flex:0 0 13px; }
+.limitations-slide-lim{ background:var(--paper); border:2px solid var(--gray-line); color:var(--ink-soft); }
+.limitations-slide-lim .m{ background:var(--gray); }
+.limitations-slide-fut{ background:var(--green-soft); border:2px solid var(--green); color:#3c6322; }
+.limitations-slide-fut .m{ background:var(--green); }
+.limitations-slide-arrow{ display:flex; align-items:center; justify-content:center; color:var(--green);
+  font-size:26px; font-weight:700; }
+
+/* ===================================================== SLIDE 11 · CONCLUSIONES */
+.conclusions-slide-cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:48px; margin-top:38px; flex:1; min-height:0; }
+.conclusions-slide-card{ position:relative; background:var(--paper); border:2.5px solid var(--ink); border-radius:16px;
+  box-shadow:var(--shadow); padding:34px 30px; display:flex; flex-direction:column; gap:20px; }
+.conclusions-slide-card .n{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:56px; line-height:1; }
+.conclusions-slide-card .bar{ width:46px; height:5px; border-radius:3px; }
+.conclusions-slide-card p{ font-size:23px; color:var(--ink-soft); line-height:1.38; }
+.conclusions-slide-card:not(:last-child)::after{ content:"→"; position:absolute; right:-37px; top:50%;
+  transform:translateY(-50%); color:var(--gray-line); font-size:30px; font-weight:700; z-index:2; }
+.conclusions-slide-card.g .n{ color:var(--green); } .conclusions-slide-card.g .bar{ background:var(--green); }
+.conclusions-slide-card.b .n{ color:var(--blue); } .conclusions-slide-card.b .bar{ background:var(--blue); }
+.conclusions-slide-general{ display:flex; align-items:center; gap:18px; margin-top:24px; background:var(--blue-soft);
+  border:1.5px solid #cdd9e6; border-radius:14px; padding:18px 26px; }
+.conclusions-slide-general .tag{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--blue-dark); border:1.5px solid var(--blue-dark); border-radius:999px;
+  padding:6px 13px; flex:0 0 auto; }
+.conclusions-slide-general p{ font-size:21px; color:var(--ink-soft); line-height:1.36; }
+</style>
+</head>
+<body>
+
+<div class="section-tag" id="sectionTag"><span class="dot"></span><span id="sectionName"></span></div>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- ================= 1 · PORTADA ================= -->
+<section data-screen-label="Portada">
+  <div class="cover">
+    <div class="cover-left">
+      <div class="cover-eyebrow">Trabajo de Fin de Grado</div>
+      <h1>Desarrollo de un <span class="hl">Museo Virtual</span> de Paleopatología</h1>
+      <p class="cover-sub">Modelos tridimensionales, docencia y acceso digital a la colección osteológica de la UAM</p>
+      <div class="cover-meta">
+        <span class="name">Clara Martínez Menchero</span>
+        <span class="aff">Grado en Biología · <b>Universidad Autónoma de Madrid</b></span>
+      </div>
+      <div class="logos" style="margin-top:40px;">
+        <img src="assets/uamciencias-color.png" alt="Facultad de Ciencias UAM" style="height:56px;">
+        <span class="sep"></span>
+        <img src="assets/lav-uam.png" alt="LAV UAM" style="height:50px;">
+      </div>
+    </div>
+    <div class="cover-right">
+      <div class="brand-mark">MUVIPAT</div>
+      <div class="ph m1"><span class="corner">3D · GLB</span>
+        <model-viewer src="modelos/asterion-web.glb" camera-controls auto-rotate auto-rotate-delay="0" rotation-per-second="22deg" interaction-prompt="none" exposure="1.05" shadow-intensity="0.5" environment-image="neutral" loading="eager" reveal="auto"></model-viewer>
+        <span class="lab">Cráneo · asterion</span></div>
+      <div class="ph m2"><span class="corner">3D · GLB</span>
+        <model-viewer src="modelos/vertebra2-web.glb" camera-controls auto-rotate auto-rotate-delay="0" rotation-per-second="22deg" interaction-prompt="none" exposure="1.05" shadow-intensity="0.5" environment-image="neutral" loading="eager" reveal="auto"></model-viewer>
+        <span class="lab">Vértebra · ligamento amarillo</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 2 · PROBLEMA ================= -->
+<section data-section="Problema" data-screen-label="Problema">
+  <div class="s">
+    <div class="kicker"><span class="num">01</span> El problema</div>
+    <h2 class="title-lg">Limitaciones de las colecciones paleopatológicas</h2>
+    <p class="problem-slide-sub">La paleopatología depende de la observación directa de piezas reales.</p>
+    <div class="problem-slide-flow">
+      <div class="problem-slide-block problem-slide-origin">
+        <div class="problem-slide-label"><span class="sq" style="background:var(--green)"></span>Origen</div>
+        <h3>Colecciones físicas</h3>
+        <p>Material osteológico de alto valor científico y docente.</p>
+      </div>
+      <div class="problem-slide-arrow">→</div>
+      <div class="problem-slide-factors">
+        <div class="problem-slide-factors-cap">factores limitantes</div>
+        <div class="problem-slide-node"><span class="dot" style="background:var(--green)"></span>Conservación</div>
+        <div class="problem-slide-node"><span class="dot" style="background:var(--blue)"></span>Acceso</div>
+        <div class="problem-slide-node"><span class="dot" style="background:var(--blue-dark)"></span>Representación limitada</div>
+      </div>
+      <div class="problem-slide-arrow">→</div>
+      <div class="problem-slide-block problem-slide-consequence">
+        <div class="problem-slide-label"><span class="sq"></span>Consecuencia</div>
+        <h3>Acceso reducido al análisis morfológico directo.</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 3 · SOLUCIÓN ================= -->
+<section data-section="Solución" data-screen-label="Solución">
+  <div class="s">
+    <div class="kicker"><span class="num">02</span> Soluciones digitales</div>
+    <h2 class="title-lg">Museos virtuales y modelos 3D como respuesta digital</h2>
+    <p class="bridge-slide-sub">Respuestas generales que amplían el acceso y la observación; MUVIPAT las aplica a la paleopatología.</p>
+    <div class="bridge-slide-flow">
+      <div class="bridge-slide-col">
+        <div class="bridge-slide-cap"><span class="sq" style="background:var(--gray)"></span>Punto de partida</div>
+        <div class="bridge-slide-barriers">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#6f6b61" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="20" width="30" height="21" rx="2.5"></rect>
+            <path d="M15 20v-4a9 9 0 0 1 18 0v4"></path>
+            <circle cx="24" cy="30" r="2.6" fill="#6f6b61" stroke="none"></circle>
+            <path d="M24 32.6V36"></path>
+          </svg>
+          <h3>Barreras físicas</h3>
+          <p>Colección de acceso restringido</p>
+        </div>
+      </div>
+      <div class="bridge-slide-arrowcol">→</div>
+      <div class="bridge-slide-col">
+        <div class="bridge-slide-cap"><span class="sq" style="background:var(--green)"></span>Respuestas digitales</div>
+        <div class="bridge-slide-nodes">
+          <div class="bridge-slide-node g">
+            <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#4a7729" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="24" cy="24" r="15"></circle>
+              <path d="M9 24h30M24 9c4 4 6 9.5 6 15s-2 11-6 15c-4-4-6-9.5-6-15s2-11 6-15z"></path>
+            </svg>
+            <div class="body">
+              <h3>Museos virtuales</h3>
+              <div class="ideas"><span>Acceso remoto</span><span>Recorridos no lineales</span></div>
+            </div>
+          </div>
+          <div class="bridge-slide-node b">
+            <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#0077c8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M24 7l15 8.5v17L24 41 9 32.5v-17L24 7z"></path>
+              <path d="M9 15.5L24 24l15-8.5M24 24v17"></path>
+            </svg>
+            <div class="body">
+              <h3>Modelos 3D</h3>
+              <div class="ideas"><span>Manipulación y volumen</span><span>Observación espacial</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bridge-slide-arrowcol">→</div>
+      <div class="bridge-slide-col">
+        <div class="bridge-slide-cap"><span class="sq" style="background:var(--blue-dark)"></span>Antecedentes</div>
+        <div class="bridge-slide-ante">
+          <div class="item">
+            <svg class="ico" viewBox="0 0 32 32" fill="none" stroke="#1c5d91" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="10" r="4"></circle><path d="M16 14v10M11 19h10M12 27l4-3 4 3"></path></svg>
+            Anatomía digital
+          </div>
+          <div class="item">
+            <svg class="ico" viewBox="0 0 32 32" fill="none" stroke="#1c5d91" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M6 27V13l10-6 10 6v14"></path><path d="M11 27V18h10v9"></path></svg>
+            Patrimonio 3D
+          </div>
+          <div class="item">
+            <svg class="ico" viewBox="0 0 32 32" fill="none" stroke="#1c5d91" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="7" width="22" height="18" rx="2"></rect><path d="M5 12h22M10 7v18"></path></svg>
+            Colecciones virtuales
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bridge-slide-muvipat">
+      <span class="name">MUVIPAT</span>
+      <span class="desc">Aplicación de este enfoque a la <b>colección paleopatológica de la UAM</b>.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4 · OBJETIVOS ================= -->
+<section data-section="Objetivos" data-screen-label="Objetivos">
+  <div class="s">
+    <div class="kicker"><span class="num">03</span> Objetivos del proyecto</div>
+    <h2 class="title-lg">Objetivos general y específicos</h2>
+    <div class="objectives-slide-cols">
+      <div class="objectives-slide-general">
+        <div class="objectives-slide-label"><span class="sq" style="background:var(--green)"></span>Objetivo general</div>
+        <p>Desarrollo de un prototipo funcional de museo virtual de paleopatología que facilite el acceso, la divulgación y la docencia de la colección paleopatológica de la UAM.</p>
+        <div class="objectives-slide-shot">
+          <div class="hint">[ captura · plataforma MUVIPAT ]&nbsp;&nbsp;assets/captura-plataforma.png</div>
+          <img src="assets/captura-plataforma.png" alt="" onerror="this.style.display='none'">
+        </div>
+      </div>
+      <div class="objectives-slide-listcol">
+        <div class="objectives-slide-label"><span class="sq" style="background:var(--blue-dark)"></span>Objetivos específicos</div>
+        <div class="objectives-slide-items">
+          <div class="objectives-slide-item"><span class="n" style="color:var(--green)">01</span><h3>Democratización del acceso</h3></div>
+          <div class="objectives-slide-item"><span class="n" style="color:var(--blue)">02</span><h3>Plataforma web funcional e interactiva</h3></div>
+          <div class="objectives-slide-item"><span class="n" style="color:var(--green)">03</span><h3>Digitalización de piezas</h3></div>
+          <div class="objectives-slide-item"><span class="n" style="color:var(--blue)">04</span><h3>Facilitación del análisis morfológico</h3></div>
+          <div class="objectives-slide-item"><span class="n" style="color:var(--green)">05</span><h3>Desarrollo de contenidos educativos</h3></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 5 · METODOLOGÍA ================= -->
+<section data-section="Metodología" data-screen-label="Metodología">
+  <div class="s">
+    <div class="kicker"><span class="num">04</span> Metodología general</div>
+    <h2 class="title-lg">De la pieza física al recurso docente</h2>
+    <div class="method-slide-flow">
+      <div class="method-slide-step"><span class="si">01</span><h3>Colección física</h3></div>
+      <div class="method-slide-arrow">→</div>
+      <div class="method-slide-step"><span class="si">02</span><h3>Selección de piezas</h3></div>
+      <div class="method-slide-arrow">→</div>
+      <div class="method-slide-step hl"><span class="si">03</span><h3>Escaneado 3D</h3></div>
+      <div class="method-slide-arrow">→</div>
+      <div class="method-slide-step"><span class="si">04</span><h3>Procesado y optimización</h3></div>
+      <div class="method-slide-arrow">→</div>
+      <div class="method-slide-step"><span class="si">05</span><h3>Integración web</h3></div>
+      <div class="method-slide-arrow">→</div>
+      <div class="method-slide-step end"><span class="si">06</span><h3>Recurso docente</h3></div>
+    </div>
+    <div class="method-slide-stage">
+      <div class="method-slide-strip">
+        <div class="method-slide-callout">
+          <div class="co-head"><span class="sq" style="background:var(--green)"></span>Criterios de selección</div>
+          <p>Alteraciones visibles · conservación · representatividad anatómica/patológica · potencial docente</p>
+        </div>
+        <div class="method-slide-callout">
+          <div class="co-head"><span class="sq" style="background:var(--blue)"></span>Escáner utilizado</div>
+          <p><b>Creality CR-Scan Raptor</b> · precisión submilimétrica según especificaciones del equipo</p>
+        </div>
+      </div>
+      <div class="method-slide-figure">
+        <img src="assets/proceso-escaneado.png" alt="" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 6 · DESARROLLO WEB ================= -->
+<section data-section="Desarrollo web" data-screen-label="Desarrollo web">
+  <div class="s">
+    <div class="kicker"><span class="num">05</span> Desarrollo web</div>
+    <h2 class="title-lg">Desarrollo técnico de la plataforma</h2>
+    <p class="wf6-sub">Un proceso iterativo: de las necesidades del museo a una plataforma conectada por datos.</p>
+    <div class="wf6-flow">
+      <div class="wf6-node">
+        <div class="wf6-n" style="color:var(--green)">01</div>
+        <h3>Necesidades del museo</h3>
+        <p>Acceso, docencia y difusión</p>
+      </div>
+      <div class="wf6-link">→</div>
+      <div class="wf6-node">
+        <div class="wf6-n" style="color:var(--blue)">02</div>
+        <h3>Arquitectura multipágina</h3>
+        <p class="mono">HTML · CSS · JavaScript</p>
+      </div>
+      <div class="wf6-link">→</div>
+      <div class="wf6-node hl">
+        <div class="wf6-n" style="color:var(--blue-dark)">03</div>
+        <h3>Datos centralizados</h3>
+        <p class="mono">data.js · fuente única</p>
+      </div>
+      <div class="wf6-link">→</div>
+      <div class="wf6-node">
+        <div class="wf6-n" style="color:var(--green)">04</div>
+        <h3>Filtros y fichas</h3>
+        <p>Tarjetas y fichas reutilizables</p>
+      </div>
+      <div class="wf6-link">→</div>
+      <div class="wf6-node">
+        <div class="wf6-n" style="color:var(--blue)">05</div>
+        <h3>Integración 3D</h3>
+        <p class="mono">model-viewer · GLB · Draco</p>
+      </div>
+      <div class="wf6-link">→</div>
+      <div class="wf6-node">
+        <div class="wf6-n" style="color:var(--green)">06</div>
+        <h3>Revisión e iteración</h3>
+        <p>Pruebas y mejora continua</p>
+      </div>
+    </div>
+    <div class="wf6-note">
+      <span class="tag">IA</span>
+      <p>IA generativa como apoyo al desarrollo, con revisión y adaptación manual.</p>
+    </div>
+    <div class="wf6-synth">
+      <span class="dot"></span>
+      <p>Resultado: <b>plataforma multipágina funcional, conectada por datos y preparada para ampliarse.</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 7 · DEMO IFRAME ================= -->
+<section data-section="Resultados" data-screen-label="Demo web">
+  <div class="demo">
+    <div class="demo-head">
+      <div class="t">
+        <h2>Resultados · Recorrido por MUVIPAT</h2>
+        <span class="mono">demo en vivo</span>
+      </div>
+    </div>
+    <div class="demo-body">
+      <div class="browser">
+        <div class="browser-bar">
+          <div class="dots"><i style="background:#e2675b"></i><i style="background:#e3b341"></i><i style="background:#5aa469"></i></div>
+          <div class="url"><span class="lock">🔒</span>museo-paleopatologia.github.io/MUVIPAT/</div>
+        </div>
+        <iframe src="https://museo-paleopatologia.github.io/MUVIPAT/" loading="eager" title="MUVIPAT" allow="fullscreen"></iframe>
+      </div>
+      <div class="demo-aside">
+        <div class="aside-frame">
+          <div class="frag fragment current-visible"><span class="fnum">01 / 07</span><h3>Arquitectura no lineal</h3><p>Navegación libre entre módulos, piezas y recursos.</p><span class="bar"></span></div>
+          <div class="frag fragment current-visible"><span class="fnum">02 / 07</span><h3>Inicio del museo</h3><p>Entrada visual al proyecto, objetivos y mapa de yacimientos.</p><span class="bar"></span></div>
+          <div class="frag fragment current-visible"><span class="fnum">03 / 07</span><h3>Exploración dual</h3><p>Acceso anatómico y patológico a la colección. Cráneo → pieza → ficha → modelo 3D.</p><span class="bar"></span></div>
+          <div class="frag fragment current-visible"><span class="fnum">04 / 07</span><h3>Colección digital</h3><p>Catálogo consultable con tarjetas, filtros y línea cronológica.</p><span class="bar"></span></div>
+          <div class="frag fragment current-visible"><span class="fnum">05 / 07</span><h3>Fichas paleopatológicas</h3><p>Contexto, diagnóstico, imágenes y documentación científica.</p><span class="bar"></span></div>
+          <div class="frag fragment current-visible"><span class="fnum">06 / 07</span><h3>Modelos 3D interactivos</h3><p>Volumen, profundidad y lesiones observables desde distintos planos.</p><span class="bar"></span></div>
+          <div class="frag fragment current-visible"><span class="fnum">07 / 07</span><h3>Aula virtual y actualidad</h3><p>Glosario, biblioteca de referencias actividades de evaluación. Noticia y eventos</p><span class="bar"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 8 · DISCUSIÓN ================= -->
+<section data-section="Discusión" data-screen-label="Discusión">
+  <div class="s">
+    <div class="kicker"><span class="num">07</span> Discusión · interpretación</div>
+    <h2 class="title-lg">Qué aporta MUVIPAT</h2>
+    <div class="disc3-stage">
+      <svg class="disc3-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <g stroke="#c2bdb0" stroke-width="1.6" vector-effect="non-scaling-stroke" fill="none">
+          <line x1="50" y1="50" x2="50" y2="15"></line>
+          <line x1="50" y1="50" x2="17" y2="85"></line>
+          <line x1="50" y1="50" x2="83" y2="85"></line>
+        </g>
+      </svg>
+      <div class="disc3-hub">
+        <span class="name">MUVIPAT</span>
+        <span class="sub">Plataforma educativa y patrimonial</span>
+      </div>
+      <div class="disc3-card top">
+        <h4><span class="sq" style="background:var(--green)"></span>Docencia</h4>
+        <p>Casos reales · aprendizaje activo · observación autónoma</p>
+      </div>
+      <div class="disc3-card bl">
+        <h4><span class="sq" style="background:var(--blue)"></span>Conservación y acceso</h4>
+        <p>Menor manipulación · consulta remota · patrimonio accesible</p>
+      </div>
+      <div class="disc3-card br">
+        <h4><span class="sq" style="background:var(--blue-dark)"></span>Competencia digital en Biología</h4>
+        <p>Escaneado 3D · desarrollo web · comunicación científica</p>
+      </div>
+    </div>
+    <div class="disc3-caution">
+      <span class="tag">cautela</span>
+      <p>Los modelos 3D no sustituyen a las piezas originales: las complementan.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 9 · LIMITACIONES ================= -->
+<section data-section="Limitaciones" data-screen-label="Limitaciones">
+  <div class="s">
+    <div class="kicker"><span class="num">08</span> Limitaciones y líneas futuras</div>
+    <h2 class="title-lg">Alcance actual y líneas de desarrollo</h2>
+    <div class="limitations-slide-headrow">
+      <div class="limitations-slide-h lim"><span class="sq" style="background:var(--gray)"></span>Limitación actual</div>
+      <div></div>
+      <div class="limitations-slide-h fut"><span class="sq" style="background:var(--green)"></span>Línea futura</div>
+    </div>
+    <div class="limitations-slide-grid">
+      <div class="limitations-slide-row">
+        <div class="limitations-slide-cell limitations-slide-lim"><span class="m"></span>Prototipo inicial</div>
+        <div class="limitations-slide-arrow">→</div>
+        <div class="limitations-slide-cell limitations-slide-fut"><span class="m"></span>Validación y consolidación funcional</div>
+      </div>
+      <div class="limitations-slide-row">
+        <div class="limitations-slide-cell limitations-slide-lim"><span class="m"></span>Colección parcial</div>
+        <div class="limitations-slide-arrow">→</div>
+        <div class="limitations-slide-cell limitations-slide-fut"><span class="m"></span>Ampliación progresiva de piezas</div>
+      </div>
+      <div class="limitations-slide-row">
+        <div class="limitations-slide-cell limitations-slide-lim"><span class="m"></span>Modelos optimizables</div>
+        <div class="limitations-slide-arrow">→</div>
+        <div class="limitations-slide-cell limitations-slide-fut"><span class="m"></span>Mejora de calidad y rendimiento</div>
+      </div>
+      <div class="limitations-slide-row">
+        <div class="limitations-slide-cell limitations-slide-lim"><span class="m"></span>Sin evaluación de usuarios</div>
+        <div class="limitations-slide-arrow">→</div>
+        <div class="limitations-slide-cell limitations-slide-fut"><span class="m"></span>Estudio de usabilidad real</div>
+      </div>
+      <div class="limitations-slide-row">
+        <div class="limitations-slide-cell limitations-slide-lim"><span class="m"></span>Protocolos pendientes</div>
+        <div class="limitations-slide-arrow">→</div>
+        <div class="limitations-slide-cell limitations-slide-fut"><span class="m"></span>Definición de acceso, licencias y ética</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 10 · CONCLUSIONES ================= -->
+<section data-section="Conclusiones" data-screen-label="Conclusiones">
+  <div class="s">
+    <div class="kicker"><span class="num">09</span> Conclusiones</div>
+    <h2 class="title-lg">Conclusiones del proyecto</h2>
+    <div class="conclusions-slide-cards">
+      <div class="conclusions-slide-card g">
+        <div class="n">01</div><div class="bar"></div>
+        <p>Es posible desarrollar un museo virtual paleopatológico con tecnologías web estándar y modelos 3D.</p>
+      </div>
+      <div class="conclusions-slide-card b">
+        <div class="n">02</div><div class="bar"></div>
+        <p>MUVIPAT amplía la consulta de piezas y reduce la manipulación física del material osteológico.</p>
+      </div>
+      <div class="conclusions-slide-card g">
+        <div class="n">03</div><div class="bar"></div>
+        <p>La formación en Biología puede enriquecerse mediante digitalización 3D, desarrollo web, datos y comunicación científica.</p>
+      </div>
+    </div>
+    <div class="conclusions-slide-general">
+      <span class="tag">conclusión general</span>
+      <p>El prototipo establece una base funcional y ampliable para conectar patrimonio, investigación, docencia y tecnología.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 11 · GRACIAS ================= -->
+<section data-screen-label="Gracias">
+  <div class="thanks">
+    <div class="deco r ph" style="box-shadow:var(--shadow-green);"><model-viewer src="modelos/pelvis-web.glb" camera-controls auto-rotate auto-rotate-delay="0" rotation-per-second="18deg" interaction-prompt="none" exposure="1.05" shadow-intensity="0.4" environment-image="neutral" loading="lazy"></model-viewer></div>
+    <div class="deco l ph"><model-viewer src="modelos/tibia-s.glb" camera-controls auto-rotate auto-rotate-delay="0" rotation-per-second="18deg" interaction-prompt="none" exposure="1.05" shadow-intensity="0.4" environment-image="neutral" loading="lazy"></model-viewer></div>
+    <div class="inner">
+      <h1>Gracias</h1>
+      <div class="q">¿Preguntas?</div>
+      <div class="who">Clara Martínez Menchero</div>
+      <div class="brand">MUVIPAT</div>
+      <div class="aff2">Grado en Biología · Universidad Autónoma de Madrid</div>
+      <div class="logos" style="margin-top:30px; justify-content:center;">
+        <img src="assets/uamciencias-color.png" alt="Facultad de Ciencias UAM" style="height:50px;">
+        <span class="sep"></span>
+        <img src="assets/lav-uam.png" alt="LAV UAM" style="height:46px;">
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
+<script>
+  Reveal.initialize({
+    width: 1600,
+    height: 900,
+    margin: 0.04,
+    minScale: 0.2,
+    maxScale: 2.0,
+    hash: true,
+    center: false,
+    controls: true,
+    progress: true,
+    transition: 'slide',
+    transitionSpeed: 'default',
+    backgroundTransition: 'fade'
+  });
+
+  // Top section badge: shows ONLY the current section title
+  const tag  = document.getElementById('sectionTag');
+  const name = document.getElementById('sectionName');
+  function updateSection(){
+    const slide = Reveal.getCurrentSlide();
+    const sec = slide && slide.getAttribute('data-section');
+    if (sec){ name.textContent = sec; tag.style.display = 'inline-flex'; }
+    else { tag.style.display = 'none'; }
+  }
+  Reveal.on('ready', updateSection);
+  Reveal.on('slidechanged', updateSection);
+</script>
+</body>
+</html>
