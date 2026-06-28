@@ -620,7 +620,6 @@
 <!-- ================= 4 · OBJETIVOS ================= -->
 <section data-section="Objetivos" data-screen-label="Objetivos">
   <div class="s">
-    <div class="kicker"><span class="num">03</span> Objetivos del proyecto</div>
     <h2 class="title-lg">Objetivos General y Específicos</h2>
 
     <!-- ===== Pentágono animado ===== -->
@@ -685,7 +684,7 @@
         <div class="objpenta-hub">
           <div class="t">MUVIPAT</div>
           <div class="r"></div>
-          <div class="d">Museo virtual del patrimonio</div>
+          <div class="d">Acceso · Docencia · Divulgación</div>
         </div>
 
         <!-- 01 Acceso -->
@@ -724,7 +723,7 @@
             <span class="badge" style="background:var(--blue-dark)">04</span>
             <span class="ico b"><svg viewBox="0 0 32 32" fill="none" width="32" height="32" stroke="var(--blue-dark)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="14" r="9"/><line x1="20.5" y1="20.5" x2="27" y2="27"/><path d="M11 14.5l2.4 2.4L18 11.5"/></svg></span>
             <div class="nt">Análisis morfológico</div>
-            <div class="ns">Modelos 3D interactivos</div>
+            <div class="ns">Modelos 3D interactivos contextualizados</div>
           </div>
         </div>
 
@@ -790,8 +789,8 @@
     </div>
     <div class="demo-popup" id="demoPopup">
       <div class="pop-inner" id="popInner">
-        <span class="pop-num" id="popNum">01 / 07</span>
-        <div class="pop-title" id="popTitle">Arquitectura no lineal</div>
+        <span class="pop-num" id="popNum">01 / 08</span>
+        <div class="pop-title" id="popTitle">Plataforma interconectada</div>
         <div class="pop-text" id="popText">Navegación libre entre módulos, piezas y recursos.</div>
         <div class="pop-bar"></div>
       </div>
@@ -954,13 +953,14 @@
   Reveal.on('slidechanged', updateSection);
 
   const popFragments = [
-    { num:'01 / 07', title:'Arquitectura no lineal',   text:'Navegación libre entre módulos, piezas y recursos.' },
-    { num:'02 / 07', title:'Inicio del museo',          text:'Entrada visual al proyecto, objetivos y mapa de yacimientos.' },
-    { num:'03 / 07', title:'Exploración dual',          text:'Acceso anatómico y patológico. Cráneo → pieza → ficha → modelo 3D.' },
-    { num:'04 / 07', title:'Colección digital',         text:'Catálogo con tarjetas, filtros y línea cronológica.' },
-    { num:'05 / 07', title:'Fichas paleopatológicas',   text:'Contexto, diagnóstico, imágenes y documentación científica.' },
-    { num:'06 / 07', title:'Modelos 3D interactivos',   text:'Volumen, profundidad y lesiones desde distintos planos.' },
-    { num:'07 / 07', title:'Aula virtual y actualidad', text:'Glosario, bibliografía, quizzes, noticias y eventos.' },
+    { num:'01 / 08', title:'Plataforma interconectada', text:'Navegación libre entre módulos, piezas y recursos.' },
+    { num:'02 / 08', title:'Inicio del museo',          text:'Entrada visual al proyecto, acceso a los módulos, mapa de yacimientos y formulario de contacto.' },
+    { num:'03 / 08', title:'Exploración dual',          text:'Búsqueda anatómica y/o patológica con filtros combinables.' },
+    { num:'04 / 08', title:'Colección digital',         text:'Línea cronológica, buscador de piezas y estructura ampliable.' },
+    { num:'05 / 08', title:'Ficha paleopatológica',     text:'Datos, diagnóstico, imágenes, referencias y términos enlazados.' },
+    { num:'06 / 08', title:'Modelo 3D',                 text:'Rotación, zoom y observación espacial.' },
+    { num:'07 / 08', title:'Aula virtual',               text:'Glosario vinculado, bibliografía y actividades de evaluación.' },
+    { num:'08 / 08', title:'Actualidad científica',      text:'Noticias, eventos y publicaciones vinculadas.' },
   ];
 
   const popInner = document.getElementById('popInner');
@@ -991,7 +991,7 @@
     if(!demoSlide) return;
     const container = document.createElement('div');
     container.style.cssText = 'position:absolute;left:-9999px;top:-9999px;pointer-events:none;';
-    for(let i=0;i<7;i++){
+    for(let i=0;i<8;i++){
       const sp = document.createElement('span');
       sp.className = 'fragment';
       sp.setAttribute('data-fragment-index', i);
