@@ -621,25 +621,121 @@
 <section data-section="Objetivos" data-screen-label="Objetivos">
   <div class="s">
     <div class="kicker"><span class="num">03</span> Objetivos del proyecto</div>
-    <h2 class="title-lg">Objetivos general y específicos</h2>
-    <div class="objectives-slide-cols">
-      <div class="objectives-slide-general">
-        <div class="objectives-slide-label"><span class="sq" style="background:var(--green)"></span>Objetivo general</div>
-        <p>Desarrollo de un prototipo funcional de museo virtual de paleopatología que facilite el acceso, la divulgación y la docencia de la colección paleopatológica de la UAM.</p>
-        <div class="objectives-slide-shot">
-          <div class="hint">[ captura · plataforma MUVIPAT ]&nbsp;&nbsp;assets/captura-plataforma.png</div>
-          <img src="assets/captura-plataforma.png" alt="" onerror="this.style.display='none'">
+    <h2 class="title-lg">Objetivos General y Específicos</h2>
+
+    <!-- ===== Pentágono animado ===== -->
+    <div class="objpenta">
+      <style>
+        .objpenta{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;}
+        .objpenta-stage{position:relative;width:1180px;height:780px;}
+        .objpenta-stage svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;}
+
+        /* Hub central (siempre visible) */
+        .objpenta-hub{position:absolute;left:590px;top:410px;transform:translate(-50%,-50%);z-index:5;width:262px;height:262px;border-radius:50%;background:var(--ink,#1a1b17);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:7px 7px 0 rgba(61,102,34,.28);border:5px solid var(--green);}
+        .objpenta-hub .t{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:42px;letter-spacing:.02em;}
+        .objpenta-hub .r{width:52px;height:2px;background:rgba(255,255,255,.32);margin:11px 0;}
+        .objpenta-hub .d{font-size:24px;color:#dfe6d6;line-height:1.28;padding:0 22px;}
+
+        /* Nodos */
+        .objpenta .node{position:absolute;width:262px;z-index:6;}
+        .objpenta .card{position:relative;background:var(--paper,#f0ece3);border-radius:18px;padding:20px 18px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;}
+        .objpenta .card.g{border:3px solid var(--green);box-shadow:5px 5px 0 rgba(61,102,34,.22);}
+        .objpenta .card.b{border:3px solid var(--blue-dark);box-shadow:5px 5px 0 rgba(20,70,122,.22);}
+        .objpenta .badge{position:absolute;top:-15px;left:-15px;width:42px;height:42px;border-radius:50%;color:#fff;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:24px;display:flex;align-items:center;justify-content:center;border:3px solid var(--bg,#ccc7bb);}
+        .objpenta .ico{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;}
+        .objpenta .ico.g{background:rgba(61,102,34,.12);}
+        .objpenta .ico.b{background:rgba(20,70,122,.12);}
+        .objpenta .nt{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:27px;line-height:1.1;color:var(--ink,#1a1b17);}
+        .objpenta .ns{font-size:24px;line-height:1.25;color:var(--ink-soft,#5f5d52);}
+
+        /* Fragment de aparición de nodo (pop) */
+        .reveal .objpenta .node.fragment{opacity:0;transform:translate(-50%,-50%) scale(.5);transition:opacity .5s ease,transform .55s cubic-bezier(.34,1.45,.5,1);}
+        .reveal .objpenta .node.fragment.visible{opacity:1;transform:translate(-50%,-50%) scale(1);}
+
+        /* Aristas y radios: presentes pero sin dibujar hasta su fragment */
+        .reveal .objpenta .draw{stroke-dashoffset:var(--len);transition:stroke-dashoffset .6s ease;}
+        .reveal .objpenta .fragment.draw{opacity:1;visibility:visible;}
+        .reveal .objpenta .fragment.draw.visible{stroke-dashoffset:0;}
+        .reveal .objpenta .fragment.draw.close{transition-delay:.22s;} /* arista de cierre 05->01 */
+      </style>
+
+      <div class="objpenta-stage">
+
+        <svg viewBox="0 0 1180 780">
+          <!-- Radios hub -> nodos (índice = el del nodo) -->
+          <line class="fragment draw" data-fragment-index="1" style="--len:360" x1="590" y1="410" x2="590" y2="60"  stroke="var(--blue-dark)" stroke-width="3" stroke-linecap="round" opacity=".45" stroke-dasharray="360"/>
+          <line class="fragment draw" data-fragment-index="2" style="--len:360" x1="590" y1="410" x2="923" y2="302" stroke="var(--blue-dark)" stroke-width="3" stroke-linecap="round" opacity=".45" stroke-dasharray="360"/>
+          <line class="fragment draw" data-fragment-index="3" style="--len:360" x1="590" y1="410" x2="796" y2="693" stroke="var(--blue-dark)" stroke-width="3" stroke-linecap="round" opacity=".45" stroke-dasharray="360"/>
+          <line class="fragment draw" data-fragment-index="4" style="--len:360" x1="590" y1="410" x2="384" y2="693" stroke="var(--blue-dark)" stroke-width="3" stroke-linecap="round" opacity=".45" stroke-dasharray="360"/>
+          <line class="fragment draw" data-fragment-index="5" style="--len:360" x1="590" y1="410" x2="257" y2="302" stroke="var(--blue-dark)" stroke-width="3" stroke-linecap="round" opacity=".45" stroke-dasharray="360"/>
+
+          <!-- Perímetro del pentágono (cada arista con su nodo) -->
+          <line class="fragment draw" data-fragment-index="2" style="--len:430" x1="590" y1="60"  x2="923" y2="302" stroke="var(--green)" stroke-width="6" stroke-linecap="round" stroke-dasharray="430"/>
+          <line class="fragment draw" data-fragment-index="3" style="--len:430" x1="923" y1="302" x2="796" y2="693" stroke="var(--green)" stroke-width="6" stroke-linecap="round" stroke-dasharray="430"/>
+          <line class="fragment draw" data-fragment-index="4" style="--len:430" x1="796" y1="693" x2="384" y2="693" stroke="var(--green)" stroke-width="6" stroke-linecap="round" stroke-dasharray="430"/>
+          <line class="fragment draw" data-fragment-index="5" style="--len:430" x1="384" y1="693" x2="257" y2="302" stroke="var(--green)" stroke-width="6" stroke-linecap="round" stroke-dasharray="430"/>
+          <line class="fragment draw close" data-fragment-index="5" style="--len:430" x1="257" y1="302" x2="590" y2="60" stroke="var(--green)" stroke-width="6" stroke-linecap="round" stroke-dasharray="430"/>
+
+          <circle cx="590" cy="410" r="8" fill="var(--blue-dark)"/>
+        </svg>
+
+        <!-- Hub MUVIPAT -->
+        <div class="objpenta-hub">
+          <div class="t">MUVIPAT</div>
+          <div class="r"></div>
+          <div class="d">Museo virtual del patrimonio</div>
         </div>
-      </div>
-      <div class="objectives-slide-listcol">
-        <div class="objectives-slide-label"><span class="sq" style="background:var(--blue-dark)"></span>Objetivos específicos</div>
-        <div class="objectives-slide-items">
-          <div class="objectives-slide-item"><span class="n" style="color:var(--green)">01</span><h3>Democratización del acceso</h3></div>
-          <div class="objectives-slide-item"><span class="n" style="color:var(--blue)">02</span><h3>Plataforma web funcional e interactiva</h3></div>
-          <div class="objectives-slide-item"><span class="n" style="color:var(--green)">03</span><h3>Digitalización de piezas</h3></div>
-          <div class="objectives-slide-item"><span class="n" style="color:var(--blue)">04</span><h3>Facilitación del análisis morfológico</h3></div>
-          <div class="objectives-slide-item"><span class="n" style="color:var(--green)">05</span><h3>Desarrollo de contenidos educativos</h3></div>
+
+        <!-- 01 Acceso -->
+        <div class="node fragment" data-fragment-index="1" style="left:590px;top:60px;">
+          <div class="card g">
+            <span class="badge" style="background:var(--green)">01</span>
+            <span class="ico g"><svg viewBox="0 0 32 32" fill="none" width="32" height="32" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="11"/><path d="M5 16h22M16 5c3 3 4.5 7 4.5 11S19 24 16 27c-3-3-4.5-7-4.5-11S13 8 16 5z"/></svg></span>
+            <div class="nt">Acceso</div>
+            <div class="ns">Democratización del acceso</div>
+          </div>
         </div>
+
+        <!-- 02 Plataforma -->
+        <div class="node fragment" data-fragment-index="2" style="left:923px;top:302px;">
+          <div class="card b">
+            <span class="badge" style="background:var(--blue-dark)">02</span>
+            <span class="ico b"><svg viewBox="0 0 32 32" fill="none" width="32" height="32" stroke="var(--blue-dark)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="24" height="20" rx="2.2"/><path d="M4 12h24"/><circle cx="8" cy="9" r="1" fill="var(--blue-dark)" stroke="none"/><circle cx="11.5" cy="9" r="1" fill="var(--blue-dark)" stroke="none"/></svg></span>
+            <div class="nt">Plataforma</div>
+            <div class="ns">Web funcional e interactiva</div>
+          </div>
+        </div>
+
+        <!-- 03 Digitalización 3D -->
+        <div class="node fragment" data-fragment-index="3" style="left:796px;top:693px;">
+          <div class="card g">
+            <span class="badge" style="background:var(--green)">03</span>
+            <span class="ico g"><svg viewBox="0 0 32 32" fill="none" width="32" height="32" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4l11 6.2v12.6L16 29 5 22.8V10.2L16 4z"/><path d="M5 10.2L16 16.4l11-6.2M16 16.4V29"/></svg></span>
+            <div class="nt">Digitalización 3D</div>
+            <div class="ns">Réplicas de piezas</div>
+          </div>
+        </div>
+
+        <!-- 04 Análisis morfológico -->
+        <div class="node fragment" data-fragment-index="4" style="left:384px;top:693px;">
+          <div class="card b">
+            <span class="badge" style="background:var(--blue-dark)">04</span>
+            <span class="ico b"><svg viewBox="0 0 32 32" fill="none" width="32" height="32" stroke="var(--blue-dark)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="14" r="9"/><line x1="20.5" y1="20.5" x2="27" y2="27"/><path d="M11 14.5l2.4 2.4L18 11.5"/></svg></span>
+            <div class="nt">Análisis morfológico</div>
+            <div class="ns">Modelos 3D interactivos</div>
+          </div>
+        </div>
+
+        <!-- 05 Contenidos educativos -->
+        <div class="node fragment" data-fragment-index="5" style="left:257px;top:302px;">
+          <div class="card g">
+            <span class="badge" style="background:var(--green)">05</span>
+            <span class="ico g"><svg viewBox="0 0 32 32" fill="none" width="32" height="32" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8c-2-2-5-2.5-9-2.5V24c4 0 7 .5 9 2.5 2-2 5-2.5 9-2.5V5.5c-4 0-7 .5-9 2.5Z"/><path d="M16 8v18.5"/></svg></span>
+            <div class="nt">Contenidos educativos</div>
+            <div class="ns">Glosario, referencias y cuestionarios</div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
