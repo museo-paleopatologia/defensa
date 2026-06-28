@@ -627,8 +627,9 @@
     <div class="objpenta">
       <style>
         .objpenta{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;}
-        .objpenta-stage{position:relative;width:1180px;height:780px;}
-        .objpenta-stage svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;}
+        .objpenta-scale{position:relative;width:920px;height:608px;}
+        .objpenta-stage{position:absolute;left:0;top:0;width:1180px;height:780px;transform:scale(.78);transform-origin:top left;}
+        .objpenta-stage > svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;}
 
         /* Hub central (siempre visible) */
         .objpenta-hub{position:absolute;left:590px;top:410px;transform:translate(-50%,-50%);z-index:5;width:262px;height:262px;border-radius:50%;background:var(--ink,#1a1b17);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:7px 7px 0 rgba(61,102,34,.28);border:5px solid var(--green);}
@@ -659,6 +660,7 @@
         .reveal .objpenta .fragment.draw.close{transition-delay:.22s;} /* arista de cierre 05->01 */
       </style>
 
+      <div class="objpenta-scale">
       <div class="objpenta-stage">
 
         <svg viewBox="0 0 1180 780">
@@ -736,6 +738,7 @@
           </div>
         </div>
 
+      </div>
       </div>
     </div>
   </div>
