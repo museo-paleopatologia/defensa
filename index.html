@@ -106,69 +106,59 @@
   font-size:24px; letter-spacing:.18em; color:var(--blue-dark); }
 
 /* ===================================================== PROBLEMA */
-.problem-slide-sub{ font-size:26px; color:var(--ink-soft); max-width:1180px; margin-top:12px; line-height:1.4; }
-.problem-slide-flow{ display:flex; align-items:stretch; gap:22px; margin-top:36px; flex:1; min-height:0; }
-.problem-slide-block{ display:flex; flex-direction:column; justify-content:center; gap:14px; }
-.problem-slide-label{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:18px;
-  letter-spacing:.12em; text-transform:uppercase; display:flex; align-items:center; gap:10px; color:var(--ink); }
-.problem-slide-label .sq{ width:16px; height:16px; border-radius:5px; display:inline-block; }
-.problem-slide-origin{ flex:0 0 320px; background:var(--paper); border:2.5px solid var(--ink);
-  border-radius:16px; box-shadow:var(--shadow); padding:32px 30px; }
-.problem-slide-origin .problem-slide-label{ color:var(--green); }
-.problem-slide-origin h3{ font-size:30px; color:var(--ink); line-height:1.06; margin-top:10px; }
-.problem-slide-origin p{ font-size:24px; color:var(--ink-soft); line-height:1.42; margin-top:8px; }
-.problem-slide-arrow{ flex:0 0 44px; display:flex; align-items:center; justify-content:center;
-  color:var(--green); font-size:36px; font-weight:700; }
-.problem-slide-factors{ flex:1; display:flex; flex-direction:column; justify-content:center; gap:16px; }
-.problem-slide-factors-cap{ font-family:'JetBrains Mono',monospace; font-size:18px; letter-spacing:.06em;
-  color:var(--ink-soft); text-transform:uppercase; text-align:center; font-weight:600; }
-.problem-slide-node{ background:var(--paper); border:2px solid var(--ink); border-radius:12px;
-  box-shadow:var(--shadow-sm); padding:20px 24px; display:flex; align-items:center; gap:16px;
-  font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:26px; color:var(--ink); }
-.problem-slide-node .dot{ width:14px; height:14px; border-radius:50%; flex:0 0 14px; }
-.problem-slide-consequence{ flex:0 0 400px; background:var(--blue-soft); border:3px solid var(--blue-dark);
-  border-radius:18px; box-shadow:7px 7px 0 rgba(20,70,122,.20); padding:36px 34px; }
-.problem-slide-consequence .problem-slide-label{ color:var(--blue-dark); }
-.problem-slide-consequence .problem-slide-label .sq{ background:var(--blue-dark); }
-.problem-slide-consequence h3{ font-size:38px; color:var(--blue-dark); line-height:1.04; margin-top:10px; }
-.problem-slide-consequence p{ font-size:24px; color:var(--ink-soft); line-height:1.4; margin-top:6px; }
+.problem-slide-flow{ display:flex; align-items:stretch; gap:0; margin-top:32px; flex:1; min-height:0; }
+.problem-slide-block{ flex:1; min-width:0; background:var(--paper); border:2.5px solid var(--ink);
+  border-radius:16px; box-shadow:var(--shadow); padding:30px 28px; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; text-align:center; gap:14px; }
+.problem-slide-num{ font-family:'JetBrains Mono',monospace; font-weight:700; font-size:30px; }
+.problem-slide-ico{ width:64px; height:64px; border-radius:16px; display:flex; align-items:center; justify-content:center; }
+.problem-slide-ico svg{ width:34px; height:34px; }
+.problem-slide-block h3{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:27px; line-height:1.1; }
+.problem-slide-block p{ font-size:21px; color:var(--ink-soft); line-height:1.36; }
+.problem-slide-block.g .problem-slide-num{ color:var(--green); }
+.problem-slide-block.g .problem-slide-ico{ background:rgba(61,102,34,.12); }
+.problem-slide-block.g .problem-slide-ico svg{ stroke:var(--green); }
+.problem-slide-block.n .problem-slide-num{ color:var(--ink-soft); }
+.problem-slide-block.n .problem-slide-ico{ background:rgba(42,43,36,.08); }
+.problem-slide-block.n .problem-slide-ico svg{ stroke:var(--ink-soft); }
+.problem-slide-block.b{ border-color:var(--blue-dark); background:var(--blue-soft); box-shadow:6px 6px 0 rgba(20,70,122,.20); }
+.problem-slide-block.b .problem-slide-num{ color:var(--blue-dark); }
+.problem-slide-block.b .problem-slide-ico{ background:rgba(20,70,122,.14); }
+.problem-slide-block.b .problem-slide-ico svg{ stroke:var(--blue-dark); }
+.problem-slide-block.b h3{ color:var(--blue-dark); }
+.problem-slide-arrow{ flex:0 0 56px; display:flex; align-items:center; justify-content:center;
+  color:var(--green); font-size:34px; font-weight:700; }
+.problem-slide-closing{ margin-top:24px; background:var(--ink); color:#fff; border-radius:15px;
+  padding:24px 36px; box-shadow:6px 6px 0 rgba(61,102,34,.26); text-align:center; }
+.problem-slide-closing p{ font-size:25px; line-height:1.4; font-weight:500; }
 
 /* ===================================================== SOLUCIÓN */
-.bridge-slide-sub{ font-size:24px; color:var(--ink-soft); max-width:1200px; margin-top:10px; line-height:1.4; }
-.bridge-slide-flow{ display:grid; grid-template-columns:230px 46px 1fr 46px 250px; gap:0; align-items:stretch;
-  margin-top:18px; flex:1; min-height:0; }
-.bridge-slide-col{ display:flex; flex-direction:column; min-height:0; }
-.bridge-slide-arrowcol{ display:flex; align-items:center; justify-content:center; color:var(--green);
-  font-size:32px; font-weight:700; }
-.bridge-slide-cap{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:18px;
-  letter-spacing:.12em; text-transform:uppercase; display:flex; align-items:center; gap:9px; margin-bottom:12px; color:var(--ink); }
-.bridge-slide-cap .sq{ width:14px; height:14px; border-radius:4px; display:inline-block; }
-.bridge-slide-barriers{ flex:1; background:var(--paper); border:2.5px solid var(--ink); border-radius:16px;
-  box-shadow:var(--shadow); padding:26px 24px; display:flex; flex-direction:column; align-items:center;
-  justify-content:center; gap:16px; text-align:center; }
-.bridge-slide-barriers .ico{ width:70px; height:70px; }
-.bridge-slide-barriers h3{ font-size:26px; color:var(--ink); line-height:1.1; }
-.bridge-slide-barriers p{ font-size:24px; color:var(--ink-soft); line-height:1.34; }
-.bridge-slide-nodes{ flex:1; display:flex; flex-direction:column; gap:16px; min-height:0; }
-.bridge-slide-node{ flex:1; background:var(--paper); border:2.5px solid var(--ink); border-radius:16px;
-  box-shadow:var(--shadow); padding:18px 22px; display:flex; align-items:center; gap:20px; }
-.bridge-slide-node .ico{ width:54px; height:54px; flex:0 0 54px; }
-.bridge-slide-node .body h3{ font-size:26px; line-height:1.05; }
-.bridge-slide-node .body .ideas{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
-.bridge-slide-node .body .ideas span{ font-size:20px; font-weight:600; color:var(--ink-soft);
-  background:var(--bg); border:1.5px solid var(--gray-line); border-radius:999px; padding:6px 14px; }
-.bridge-slide-node.g{ border-left:7px solid var(--green); }
-.bridge-slide-node.b{ border-left:7px solid var(--blue); }
-.bridge-slide-ante{ flex:1; display:flex; flex-direction:column; gap:10px; }
-.bridge-slide-ante .item{ flex:1; display:flex; align-items:center; gap:14px; background:var(--paper);
-  border:2px solid var(--ink); border-radius:12px; box-shadow:var(--shadow-sm); padding:0 18px;
-  font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:24px; color:var(--ink); }
-.bridge-slide-ante .item .ico{ width:30px; height:30px; flex:0 0 30px; }
-.bridge-slide-muvipat{ display:flex; align-items:center; gap:22px; margin-top:18px; background:var(--ink); color:#fff;
-  border-radius:16px; padding:20px 30px; box-shadow:6px 6px 0 rgba(61,102,34,.28); }
-.bridge-slide-muvipat .name{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:34px; letter-spacing:.02em; flex:0 0 auto; }
-.bridge-slide-muvipat .desc{ font-size:24px; color:#e7ece2; line-height:1.28; }
-.bridge-slide-muvipat .desc b{ color:#b8e08a; font-weight:700; }
+.bridge-slide-flow{ display:flex; align-items:stretch; gap:0; margin-top:32px; flex:1; min-height:0; }
+.bridge-slide-block{ flex:1; min-width:0; background:var(--paper); border:2.5px solid var(--ink);
+  border-radius:16px; box-shadow:var(--shadow); padding:30px 28px; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; text-align:center; gap:14px; }
+.bridge-slide-num{ font-family:'JetBrains Mono',monospace; font-weight:700; font-size:30px; }
+.bridge-slide-ico{ width:64px; height:64px; border-radius:16px; display:flex; align-items:center; justify-content:center; }
+.bridge-slide-ico svg{ width:34px; height:34px; }
+.bridge-slide-block h3{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:27px; line-height:1.1; }
+.bridge-slide-block p{ font-size:21px; color:var(--ink-soft); line-height:1.36; }
+.bridge-slide-block.g .bridge-slide-num{ color:var(--green); }
+.bridge-slide-block.g .bridge-slide-ico{ background:rgba(61,102,34,.12); }
+.bridge-slide-block.g .bridge-slide-ico svg{ stroke:var(--green); }
+.bridge-slide-block.b .bridge-slide-num{ color:var(--blue-dark); }
+.bridge-slide-block.b .bridge-slide-ico{ background:rgba(20,70,122,.12); }
+.bridge-slide-block.b .bridge-slide-ico svg{ stroke:var(--blue-dark); }
+.bridge-slide-block.muvipat{ flex:1.25; background:var(--ink); border-color:var(--green); border-width:3px;
+  box-shadow:7px 7px 0 rgba(61,102,34,.30); gap:10px; }
+.bridge-slide-block.muvipat .bridge-slide-num{ color:#b8e08a; }
+.bridge-slide-block.muvipat h3{ font-size:36px; color:#fff; letter-spacing:.02em; }
+.bridge-slide-block.muvipat p{ color:#dfe6d6; font-size:22px; max-width:340px; }
+.bridge-slide-arrow{ flex:0 0 56px; display:flex; align-items:center; justify-content:center;
+  color:var(--green); font-size:34px; font-weight:700; }
+.bridge-slide-closing{ margin-top:24px; display:flex; align-items:center; justify-content:center; gap:16px; }
+.bridge-slide-closing span{ font-family:'JetBrains Mono',monospace; font-size:21px; letter-spacing:.1em;
+  text-transform:uppercase; font-weight:700; color:var(--blue-dark); }
+.bridge-slide-closing .sep{ color:var(--green); font-size:21px; font-weight:700; }
 
 /* ===================================================== OBJETIVOS */
 .objectives-slide-cols{ display:grid; grid-template-columns:.92fr 1.08fr; gap:36px; margin-top:28px; flex:1; min-height:0; }
@@ -196,17 +186,35 @@
 .objectives-slide-item h3{ font-size:24px; line-height:1.12; }
 
 /* ===================================================== METODOLOGÍA */
-.method-slide-flow{ display:flex; align-items:stretch; gap:0; margin-top:28px; }
+.method-slide-sub{ font-size:23px; color:var(--ink-soft); margin-top:8px; line-height:1.3; }
+.method-slide-flow{ display:flex; align-items:stretch; gap:0; margin-top:24px; }
+.method-slide-origin{ flex:0 0 140px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:8px; text-align:center; padding:10px 8px; }
+.method-slide-origin-ico{ width:46px; height:46px; border-radius:13px; background:rgba(42,43,36,.08);
+  display:flex; align-items:center; justify-content:center; }
+.method-slide-origin-ico svg{ width:26px; height:26px; stroke:var(--ink-soft); }
+.method-slide-origin span:last-child{ font-size:17px; font-weight:600; color:var(--ink-soft);
+  letter-spacing:.02em; line-height:1.2; }
 .method-slide-step{ flex:1; background:var(--paper); border:2.5px solid var(--ink); border-radius:13px;
-  padding:18px 14px; display:flex; flex-direction:column; gap:8px; box-shadow:var(--shadow-sm); }
+  padding:18px 14px; display:flex; flex-direction:column; align-items:center; text-align:center;
+  gap:8px; box-shadow:var(--shadow-sm); }
 .method-slide-step .si{ font-family:'JetBrains Mono',monospace; font-size:18px; color:var(--blue-dark); font-weight:600; }
-.method-slide-step h3{ font-family:'Space Grotesk',sans-serif; font-size:24px; line-height:1.1; }
-.method-slide-step p{ font-size:20px; color:var(--ink-soft); line-height:1.3; margin-top:4px; }
+.method-slide-ico{ width:46px; height:46px; border-radius:13px; background:rgba(20,70,122,.10);
+  display:flex; align-items:center; justify-content:center; }
+.method-slide-ico svg{ width:26px; height:26px; stroke:var(--blue-dark); }
+.method-slide-step h3{ font-family:'Space Grotesk',sans-serif; font-size:23px; line-height:1.1; }
+.method-slide-step p{ font-size:19px; color:var(--ink-soft); line-height:1.28; margin-top:2px; }
 .method-slide-step.hl{ border-color:var(--blue); border-width:3px; background:var(--blue-soft); }
 .method-slide-step.hl .si{ color:var(--blue); }
+.method-slide-step.hl .method-slide-ico{ background:rgba(0,95,163,.16); }
 .method-slide-step.end{ background:var(--green-soft); }
+.method-slide-step.end .method-slide-ico{ background:rgba(61,102,34,.14); }
+.method-slide-step.end .method-slide-ico svg{ stroke:var(--green); }
 .method-slide-arrow{ flex:0 0 26px; display:flex; align-items:center; justify-content:center;
   color:var(--green); font-size:24px; font-weight:700; }
+.method-slide-shot{ flex:1; min-height:0; margin-top:18px; border:2px solid var(--ink); border-radius:13px;
+  overflow:hidden; position:relative; box-shadow:var(--shadow); }
+.method-slide-shot img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
 
 /* ===================================================== DEMO */
 .demo{ height:900px; box-sizing:border-box; padding:46px 54px 42px; display:flex; flex-direction:column; position:relative; }
@@ -295,22 +303,34 @@
 .reveal .roadmap-station.fragment.visible{ opacity:1; transform:translateY(0); }
 
 /* ===================================================== CONCLUSIONES */
-.conclusions-slide-cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:42px; margin-top:32px; flex:1; min-height:0; }
-.conclusions-slide-card{ position:relative; background:var(--paper); border:2.5px solid var(--ink); border-radius:16px;
-  box-shadow:var(--shadow); padding:32px 28px; display:flex; flex-direction:column; gap:18px; }
-.conclusions-slide-card .n{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:56px; line-height:1; }
-.conclusions-slide-card .bar{ width:46px; height:5px; border-radius:3px; }
-.conclusions-slide-card p{ font-size:24px; color:var(--ink-soft); line-height:1.38; }
-.conclusions-slide-card:not(:last-child)::after{ content:"→"; position:absolute; right:-30px; top:50%;
-  transform:translateY(-50%); color:var(--gray-line); font-size:30px; font-weight:700; z-index:2; }
-.conclusions-slide-card.g .n{ color:var(--green); } .conclusions-slide-card.g .bar{ background:var(--green); }
-.conclusions-slide-card.b .n{ color:var(--blue); } .conclusions-slide-card.b .bar{ background:var(--blue); }
-.conclusions-slide-general{ display:flex; align-items:center; gap:18px; margin-top:20px; background:var(--blue-soft);
-  border:2px solid var(--blue-dark); border-radius:14px; padding:18px 26px; }
-.conclusions-slide-general .tag{ font-family:'JetBrains Mono',monospace; font-size:16px; letter-spacing:.06em;
-  text-transform:uppercase; color:var(--blue-dark); border:2px solid var(--blue-dark); border-radius:999px;
-  padding:6px 14px; flex:0 0 auto; font-weight:700; }
-.conclusions-slide-general p{ font-size:24px; color:var(--ink-soft); line-height:1.36; }
+.concl-timeline{ display:flex; align-items:center; gap:0; margin-top:38px; padding:0 6px; }
+.concl-dot{ width:64px; height:64px; flex:0 0 64px; border-radius:50%; background:var(--paper);
+  border:3px solid var(--gray-line); display:flex; align-items:center; justify-content:center; position:relative;
+  font-family:'JetBrains Mono',monospace; font-weight:700; font-size:21px; color:var(--ink-soft);
+  transition:background .4s ease, border-color .4s ease, color .4s ease, transform .4s ease; }
+.concl-dot .lbl{ position:absolute; top:74px; left:50%; transform:translateX(-50%); white-space:nowrap;
+  font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:18px; color:var(--ink-soft); transition:color .4s ease; }
+.concl-seg{ flex:1; height:4px; margin:0 6px; border-radius:2px; background:var(--gray-line); transition:background .4s ease; }
+.reveal .concl-dot.fragment, .reveal .concl-seg.fragment{ opacity:1; visibility:visible; }
+.reveal .concl-dot.fragment.visible{ transform:scale(1.08); }
+.reveal .concl-dot.g.fragment.visible{ background:var(--green); border-color:var(--green); color:#fff; }
+.reveal .concl-dot.b.fragment.visible{ background:var(--blue-dark); border-color:var(--blue-dark); color:#fff; }
+.reveal .concl-dot.fragment.visible .lbl{ color:var(--ink); }
+.reveal .concl-seg.fragment.visible{ background:var(--green); }
+.concl-cards{ position:relative; flex:1; min-height:0; margin-top:64px; }
+.concl-card{ position:absolute; inset:0; background:var(--paper); border:2.5px solid var(--ink); border-radius:20px;
+  box-shadow:var(--shadow); padding:46px 64px; display:flex; flex-direction:column; justify-content:center;
+  gap:16px; transition:opacity .5s ease; }
+.concl-card .n{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:60px; line-height:1; }
+.concl-card h3{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:34px; line-height:1.12; }
+.concl-card p{ font-size:25px; color:var(--ink-soft); line-height:1.5; max-width:1180px; }
+.concl-card.g{ border-left:10px solid var(--green); } .concl-card.g .n{ color:var(--green); }
+.concl-card.b{ border-left:10px solid var(--blue-dark); } .concl-card.b .n{ color:var(--blue-dark); }
+.concl-card.final{ background:var(--ink); border-color:var(--green); border-width:3px;
+  box-shadow:7px 7px 0 rgba(61,102,34,.30); }
+.concl-card.final .n{ color:#b8e08a; }
+.concl-card.final h3{ color:#fff; }
+.concl-card.final p{ color:#dfe6d6; }
 
 /* ===================================================== GRACIAS */
 .thanks{ height:900px; display:flex; flex-direction:column; justify-content:center; align-items:center;
@@ -368,267 +388,68 @@
 <section data-section="Problema" data-screen-label="01·Problema">
   <div class="s">
 
-    <!-- Kicker + título (clases del deck → badge lo gestiona .section-tag) -->
-    <h2 class="title-lg">Limitaciones de las colecciones paleopatológicas</h2>
+    <h2 class="title-lg">Origen del problema</h2>
 
-    <div style="display:grid;grid-template-columns:1fr 54px 1.22fr 54px 1fr;flex:1;min-height:0;margin-top:22px;align-items:stretch;">
-
-      <!-- COL 1: ORIGEN -->
-      <div style="display:flex;flex-direction:column;">
-        <div style="display:flex;align-items:center;gap:9px;height:22px;margin-bottom:12px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;letter-spacing:.12em;text-transform:uppercase;color:var(--green);">
-          <span style="width:13px;height:13px;border-radius:50%;background:var(--green);display:inline-block;"></span>Origen
-        </div>
-        <div style="flex:1;background:var(--paper);border:2.5px solid var(--ink);border-radius:16px;box-shadow:var(--shadow);padding:26px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px;">
-          <svg viewBox="0 0 64 64" fill="none" style="width:72px;height:72px;" stroke="var(--green)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M32 8C20 8 13 16 13 27c0 6 2.3 10.4 5.8 13.4.9.8 1.4 1.7 1.4 2.8V47c0 1.7 1.3 3 3 3 .8 0 1.5.7 1.5 1.5V53c0 1.7 1.3 3 3 3h6.6c1.7 0 3-1.3 3-3v-1.5c0-.8.7-1.5 1.5-1.5 1.7 0 3-1.3 3-3v-3.8c0-1.1.5-2 1.4-2.8C48.7 37.4 51 33 51 27 51 16 44 8 32 8Z"/>
-            <circle cx="23.5" cy="28" r="5.2" fill="var(--green)" stroke="none"/>
-            <circle cx="40.5" cy="28" r="5.2" fill="var(--green)" stroke="none"/>
-            <path d="M32 36l-3.2 6.2h6.4L32 36Z" fill="var(--green)" stroke="none"/>
-            <path d="M27.5 50.5v5.5M32 50.5v5.5M36.5 50.5v5.5"/>
-          </svg>
-          <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:25px;line-height:1.14;">Colecciones físicas osteológicas</h3>
-          <p style="font-size:20px;color:var(--ink-soft);line-height:1.4;">Material de alto valor científico y docente cuyo estudio requiere observación directa.</p>
-        </div>
+    <div class="problem-slide-flow">
+      <div class="problem-slide-block g">
+        <span class="problem-slide-num">01</span>
+        <span class="problem-slide-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="5.5" r="3"/><circle cx="18.5" cy="18.5" r="3"/><line x1="7.6" y1="7.6" x2="16.4" y2="16.4"/></svg></span>
+        <h3>Valor diagnóstico</h3>
+        <p>Las piezas óseas son la base del diagnóstico paleopatológico.</p>
       </div>
-
-      <!-- ARROW -->
-      <div style="display:flex;flex-direction:column;">
-        <div style="height:34px;"></div>
-        <div style="flex:1;display:flex;align-items:center;justify-content:center;">
-          <svg viewBox="0 0 40 40" fill="none" style="width:34px;height:34px;" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20h26M24 11l9 9-9 9"/></svg>
-        </div>
+      <div class="problem-slide-arrow">→</div>
+      <div class="problem-slide-block n">
+        <span class="problem-slide-num">02</span>
+        <span class="problem-slide-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 1 1 8 0v4"/></svg></span>
+        <h3>Acceso condicionado</h3>
+        <p>Conservación · gestión institucional · ética · dispersión geográfica</p>
       </div>
-
-      <!-- COL 2: FACTORES -->
-      <div style="display:flex;flex-direction:column;">
-        <div style="display:flex;align-items:center;gap:9px;height:22px;margin-bottom:12px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);">
-          <span style="width:13px;height:13px;border-radius:3px;background:var(--ink-soft);display:inline-block;"></span>Factores limitantes
-        </div>
-        <div style="display:flex;flex-direction:column;gap:12px;flex:1;min-height:0;">
-
-          <div style="flex:1;background:var(--paper);border:2px solid var(--ink);border-radius:12px;box-shadow:var(--shadow-sm);padding:14px 20px;display:flex;align-items:center;gap:16px;">
-            <span style="flex:0 0 46px;height:46px;border-radius:11px;background:rgba(61,102,34,.10);display:flex;align-items:center;justify-content:center;">
-              <svg viewBox="0 0 36 36" fill="none" style="width:28px;height:28px;" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="16" width="22" height="15" rx="2.5"/><path d="M12 16v-3a6 6 0 0 1 12 0v3"/><circle cx="18" cy="22" r="1.8" fill="var(--green)" stroke="none"/><line x1="18" y1="24" x2="18" y2="27"/></svg>
-            </span>
-            <div>
-              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:var(--ink);">Acceso restringido</div>
-              <div style="font-size:17px;color:var(--ink-soft);margin-top:2px;">Gestión, conservación y ética</div>
-            </div>
-          </div>
-
-          <div style="flex:1;background:var(--paper);border:2px solid var(--ink);border-radius:12px;box-shadow:var(--shadow-sm);padding:14px 20px;display:flex;align-items:center;gap:16px;">
-            <span style="flex:0 0 46px;height:46px;border-radius:11px;background:rgba(61,102,34,.10);display:flex;align-items:center;justify-content:center;">
-              <svg viewBox="0 0 36 36" fill="none" style="width:28px;height:28px;" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 4c-5.5 0-10 4.3-10 9.7C8 21 18 32 18 32s10-11 10-18.3C28 8.3 23.5 4 18 4Z"/><circle cx="18" cy="13.5" r="3.4"/></svg>
-            </span>
-            <div>
-              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:var(--ink);">Dispersión geográfica</div>
-              <div style="font-size:17px;color:var(--ink-soft);margin-top:2px;">Materiales dispersos y de ubicación fija</div>
-            </div>
-          </div>
-
-          <div style="flex:1;background:var(--paper);border:2px solid var(--ink);border-radius:12px;box-shadow:var(--shadow-sm);padding:14px 20px;display:flex;align-items:center;gap:16px;">
-            <span style="flex:0 0 46px;height:46px;border-radius:11px;background:rgba(61,102,34,.10);display:flex;align-items:center;justify-content:center;">
-              <svg viewBox="0 0 36 36" fill="none" style="width:28px;height:28px;" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="26" height="20" rx="2.5"/><path d="M9 24l6-6 4 4 3-3 5 5"/><circle cx="13" cy="14" r="2.2"/></svg>
-            </span>
-            <div>
-              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:var(--ink);">Representación limitada</div>
-              <div style="font-size:17px;color:var(--ink-soft);margin-top:2px;">Imágenes 2D, descripciones escritas o visitas puntuales</div>
-            </div>
-          </div>
-
-          <div style="flex:1;background:var(--blue-soft);border:2px solid var(--blue-dark);border-radius:12px;box-shadow:3px 3px 0 rgba(20,70,122,.16);padding:14px 20px;display:flex;align-items:center;gap:16px;">
-            <span style="flex:0 0 46px;height:46px;border-radius:11px;background:rgba(20,70,122,.12);display:flex;align-items:center;justify-content:center;">
-              <svg viewBox="0 0 36 36" fill="none" style="width:28px;height:28px;" stroke="var(--blue-dark)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M30 12a13 13 0 0 0-23-3M6 6v6h6"/><path d="M6 24a13 13 0 0 0 23 3M30 30v-6h-6"/></svg>
-            </span>
-            <div>
-              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:var(--blue-dark);">Desfase con la transformación digital</div>
-              <div style="font-size:17px;color:var(--ink-soft);margin-top:2px;">Ausencia de métodos activos de aprendizaje</div>
-            </div>
-          </div>
-
-        </div>
+      <div class="problem-slide-arrow">→</div>
+      <div class="problem-slide-block b">
+        <span class="problem-slide-num">03</span>
+        <span class="problem-slide-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16l5-4 4 3 5-5 4 4"/></svg></span>
+        <h3>Comprensión limitada</h3>
+        <p>Las imágenes 2D no siempre muestran volumen, profundidad o distribución espacial.</p>
       </div>
-
-      <!-- ARROW -->
-      <div style="display:flex;flex-direction:column;">
-        <div style="height:34px;"></div>
-        <div style="flex:1;display:flex;align-items:center;justify-content:center;">
-          <svg viewBox="0 0 40 40" fill="none" style="width:34px;height:34px;" stroke="var(--blue-dark)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20h26M24 11l9 9-9 9"/></svg>
-        </div>
-      </div>
-
-      <!-- COL 3: CONSECUENCIAS -->
-      <div style="display:flex;flex-direction:column;">
-        <div style="display:flex;align-items:center;gap:9px;height:22px;margin-bottom:12px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-dark);">
-          <span style="width:13px;height:13px;border-radius:50%;background:var(--blue-dark);display:inline-block;"></span>Consecuencias
-        </div>
-        <div style="flex:1;background:var(--blue-soft);border:3px solid var(--blue-dark);border-radius:16px;box-shadow:6px 6px 0 rgba(20,70,122,.20);padding:22px 22px;display:flex;flex-direction:column;gap:14px;">
-
-          <div style="flex:1;background:var(--paper);border-radius:12px;padding:20px 22px;border:1.5px solid var(--blue-dark);display:flex;align-items:center;gap:16px;">
-            <span style="flex:0 0 48px;height:48px;border-radius:11px;background:rgba(20,70,122,.10);display:flex;align-items:center;justify-content:center;">
-              <svg viewBox="0 0 28 28" fill="none" style="width:28px;height:28px;" stroke="var(--blue-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6 3 11l11 5 11-5-11-5Z"/><path d="M8 13.5V19c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5"/><line x1="25" y1="11" x2="25" y2="17"/></svg>
-            </span>
-            <div>
-              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;color:var(--blue-dark);margin-bottom:5px;">En docencia</div>
-              <div style="font-size:21px;color:var(--ink-soft);line-height:1.34;">Menor acceso a material real · aprendizaje menos activo · dificultad morfológica</div>
-            </div>
-          </div>
-
-          <div style="flex:1;background:var(--paper);border-radius:12px;padding:20px 22px;border:1.5px solid var(--blue-dark);display:flex;align-items:center;gap:16px;">
-            <span style="flex:0 0 48px;height:48px;border-radius:11px;background:rgba(20,70,122,.10);display:flex;align-items:center;justify-content:center;">
-              <svg viewBox="0 0 28 28" fill="none" style="width:28px;height:28px;" stroke="var(--blue-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/><line x1="17" y1="17" x2="23" y2="23"/><path d="M12 9v6M9 12h6"/></svg>
-            </span>
-            <div>
-              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;color:var(--blue-dark);margin-bottom:5px;">En comunicación científica</div>
-              <div style="font-size:21px;color:var(--ink-soft);line-height:1.34;">Baja visibilidad de colecciones · menor comparación y colaboración científica</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
     </div>
+
+    <div class="problem-slide-closing">
+      <p>El reto no es solo acceder a las piezas, sino poder observarlas, compararlas y aprender a partir de ellas.</p>
+    </div>
+
   </div>
 </section>
 
 <!-- ================= 3 · SOLUCIÓN ================= -->
 <section data-section="Solución" data-screen-label="02·Solución">
-  <div style="box-sizing:border-box;height:900px;padding:56px 80px 48px;display:flex;flex-direction:column;">
+  <div class="s">
 
-    <!-- Título -->
-    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:46px;line-height:1.04;letter-spacing:-.01em;margin-top:12px;">Museos virtuales y modelos 3D como respuesta digital</h2>
-    <p style="font-size:24px;color:var(--ink-soft);margin-top:9px;line-height:1.4;">Recursos digitales aplicados al patrimonio científico y biomédico.</p>
+    <h2 class="title-lg">Museo virtual y modelos 3D como respuesta digital</h2>
 
-    <!-- FLOW: la columna central pesa más (1.34fr) -->
-    <div style="display:grid;grid-template-columns:0.92fr 40px 1.34fr 40px 0.94fr;flex:1;min-height:0;margin-top:22px;align-items:stretch;">
-
-      <!-- COL 1: PUNTO DE PARTIDA (más ligera) -->
-      <div style="display:flex;flex-direction:column;">
-        <div style="display:flex;align-items:center;gap:9px;height:20px;margin-bottom:11px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-soft);">
-          <span style="width:13px;height:13px;border-radius:4px;background:var(--ink-soft);display:inline-block;"></span>Punto de partida
-        </div>
-        <div style="display:flex;flex-direction:column;gap:12px;flex:1;min-height:0;">
-
-          <div style="flex:1;background:var(--paper);border:2px solid var(--gray-line);border-radius:13px;box-shadow:var(--shadow-sm);padding:18px 22px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;">
-            <span style="flex:0 0 52px;width:52px;height:52px;border-radius:14px;background:rgba(42,43,36,.08);display:flex;align-items:center;justify-content:center;">
-              <svg viewBox="0 0 32 32" fill="none" style="width:30px;height:30px;" stroke="var(--ink-soft)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="14" width="20" height="13" rx="2.2"/><path d="M10.5 14v-2.5a5.5 5.5 0 0 1 11 0V14"/><circle cx="16" cy="20" r="1.7" fill="var(--ink-soft)" stroke="none"/></svg>
-            </span>
-            <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:27px;line-height:1.08;">Acceso físico condicionado</div>
-            <div style="font-size:24px;color:var(--ink-soft);line-height:1.32;">Restricciones, conservación y dispersión geográfica</div>
-          </div>
-
-          <div style="flex:1;background:var(--paper);border:2px solid var(--gray-line);border-radius:13px;box-shadow:var(--shadow-sm);padding:18px 22px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;">
-            <span style="flex:0 0 52px;width:52px;height:52px;border-radius:14px;background:rgba(42,43,36,.08);display:flex;align-items:center;justify-content:center;">
-              <svg viewBox="0 0 32 32" fill="none" style="width:30px;height:30px;" stroke="var(--ink-soft)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="7" width="22" height="16" rx="2.2"/><path d="M9 19l5-5 3 3 2.5-2.5L25 19"/><circle cx="11" cy="12" r="1.8"/></svg>
-            </span>
-            <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:27px;line-height:1.08;">Aprendizaje poco espacial</div>
-            <div style="font-size:24px;color:var(--ink-soft);line-height:1.32;">Imágenes 2D, descripciones y visitas puntuales</div>
-          </div>
-
-        </div>
+    <div class="bridge-slide-flow">
+      <div class="bridge-slide-block g">
+        <span class="bridge-slide-num">01</span>
+        <span class="bridge-slide-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.2 2.3 3.4 5.5 3.4 9s-1.2 6.7-3.4 9c-2.2-2.3-3.4-5.5-3.4-9S9.8 5.3 12 3z"/></svg></span>
+        <h3>Museo virtual</h3>
+        <p>Reduce barreras físicas y geográficas.</p>
       </div>
-
-      <!-- ARROW -->
-      <div style="display:flex;flex-direction:column;"><div style="height:31px;"></div>
-        <div style="flex:1;display:flex;align-items:center;justify-content:center;">
-          <svg viewBox="0 0 40 40" fill="none" style="width:32px;height:32px;" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20h26M24 11l9 9-9 9"/></svg>
-        </div>
+      <div class="bridge-slide-arrow">→</div>
+      <div class="bridge-slide-block b">
+        <span class="bridge-slide-num">02</span>
+        <span class="bridge-slide-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.6v9.8L12 21l-8-4.6V7.6L12 3z"/><path d="M4 7.6L12 12l8-4.4M12 12v9"/></svg></span>
+        <h3>Modelos 3D</h3>
+        <p>Permiten rotar, ampliar y comprender la lesión desde una perspectiva espacial.</p>
       </div>
-
-      <!-- COL 2: RESPUESTAS DIGITALES (núcleo visual) -->
-      <div style="display:flex;flex-direction:column;">
-        <div style="display:flex;align-items:center;gap:9px;height:20px;margin-bottom:11px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;letter-spacing:.11em;text-transform:uppercase;color:var(--green);">
-          <span style="width:13px;height:13px;border-radius:4px;background:var(--green);display:inline-block;"></span>Respuestas digitales
-        </div>
-        <div style="display:flex;flex-direction:column;gap:14px;flex:1;min-height:0;">
-
-          <div style="flex:1;background:var(--paper);border:3px solid var(--ink);border-radius:16px;box-shadow:var(--shadow);border-left:9px solid var(--green);padding:20px 24px;display:flex;flex-direction:column;gap:12px;justify-content:center;">
-            <div style="display:flex;align-items:center;gap:14px;">
-              <span style="flex:0 0 50px;height:50px;border-radius:13px;background:rgba(61,102,34,.12);display:flex;align-items:center;justify-content:center;">
-                <svg viewBox="0 0 32 32" fill="none" style="width:30px;height:30px;" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="11"/><path d="M5 16h22M16 5c3 3 4.5 7 4.5 11S19 24 16 27c-3-3-4.5-7-4.5-11S13 8 16 5z"/></svg>
-              </span>
-              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;">Museo virtual</div>
-            </div>
-            <div style="display:flex;flex-wrap:wrap;gap:9px;">
-              <span style="font-size:24px;font-weight:600;color:var(--ink-soft);background:var(--bg);border:1.5px solid var(--gray-line);border-radius:999px;padding:6px 16px;white-space:nowrap;">Acceso remoto</span>
-              <span style="font-size:24px;font-weight:600;color:var(--ink-soft);background:var(--bg);border:1.5px solid var(--gray-line);border-radius:999px;padding:6px 16px;white-space:nowrap;">Adaptable</span>
-              <span style="font-size:24px;font-weight:600;color:var(--ink-soft);background:var(--bg);border:1.5px solid var(--gray-line);border-radius:999px;padding:6px 16px;white-space:nowrap;">Actualizable</span>
-              <span style="font-size:24px;font-weight:600;color:var(--ink-soft);background:var(--bg);border:1.5px solid var(--gray-line);border-radius:999px;padding:6px 16px;white-space:nowrap;">Recorridos no lineales</span>
-            </div>
-          </div>
-
-          <div style="flex:1;background:var(--paper);border:3px solid var(--ink);border-radius:16px;box-shadow:var(--shadow);border-left:9px solid var(--blue);padding:20px 24px;display:flex;flex-direction:column;gap:12px;justify-content:center;">
-            <div style="display:flex;align-items:center;gap:14px;">
-              <span style="flex:0 0 50px;height:50px;border-radius:13px;background:rgba(0,95,163,.12);display:flex;align-items:center;justify-content:center;">
-                <svg viewBox="0 0 32 32" fill="none" style="width:30px;height:30px;" stroke="var(--blue)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4l11 6.2v12.6L16 29 5 22.8V10.2L16 4z"/><path d="M5 10.2L16 16.4l11-6.2M16 16.4V29"/></svg>
-              </span>
-              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;">Modelos tridimensionales</div>
-            </div>
-            <div style="display:flex;flex-wrap:wrap;gap:9px;">
-              <span style="font-size:24px;font-weight:600;color:var(--ink-soft);background:var(--bg);border:1.5px solid var(--gray-line);border-radius:999px;padding:6px 16px;white-space:nowrap;">Manipulación digital</span>
-              <span style="font-size:24px;font-weight:600;color:var(--ink-soft);background:var(--bg);border:1.5px solid var(--gray-line);border-radius:999px;padding:6px 16px;white-space:nowrap;">Rotación</span>
-              <span style="font-size:24px;font-weight:600;color:var(--ink-soft);background:var(--bg);border:1.5px solid var(--gray-line);border-radius:999px;padding:6px 16px;white-space:nowrap;">Detalle</span>
-              <span style="font-size:24px;font-weight:600;color:var(--ink-soft);background:var(--bg);border:1.5px solid var(--gray-line);border-radius:999px;padding:6px 16px;white-space:nowrap;">Perspectiva espacial</span>
-            </div>
-          </div>
-
-        </div>
+      <div class="bridge-slide-arrow">→</div>
+      <div class="bridge-slide-block muvipat">
+        <span class="bridge-slide-num">03</span>
+        <h3>MUVIPAT</h3>
+        <p>Complemento digital de la colección física y recurso docente activo.</p>
       </div>
-
-      <!-- ARROW -->
-      <div style="display:flex;flex-direction:column;"><div style="height:31px;"></div>
-        <div style="flex:1;display:flex;align-items:center;justify-content:center;">
-          <svg viewBox="0 0 40 40" fill="none" style="width:32px;height:32px;" stroke="var(--blue-dark)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20h26M24 11l9 9-9 9"/></svg>
-        </div>
-      </div>
-
-      <!-- COL 3: FUNCIÓN EN MUVIPAT -->
-      <div style="display:flex;flex-direction:column;">
-        <div style="display:flex;align-items:center;gap:9px;height:20px;margin-bottom:11px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;letter-spacing:.11em;text-transform:uppercase;color:var(--blue-dark);">
-          <span style="width:13px;height:13px;border-radius:4px;background:var(--blue-dark);display:inline-block;"></span>Función en MUVIPAT
-        </div>
-        <div style="display:flex;flex-direction:column;gap:12px;flex:1;min-height:0;">
-
-          <div style="flex:1;background:var(--blue-soft);border:2px solid var(--blue-dark);border-radius:13px;box-shadow:var(--shadow-sm);padding:16px 18px;display:flex;align-items:center;gap:14px;">
-            <span style="flex:0 0 44px;height:44px;border-radius:11px;background:rgba(20,70,122,.12);display:flex;align-items:center;justify-content:center;">
-              <svg viewBox="0 0 32 32" fill="none" style="width:26px;height:26px;" stroke="var(--blue-dark)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="18" height="13" rx="2"/><path d="M9 23h8"/><rect x="24" y="12" width="6" height="14" rx="1.6"/></svg>
-            </span>
-            <div>
-              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:25px;color:var(--blue-dark);">Reducir barreras</div>
-              <div style="font-size:24px;color:var(--ink-soft);line-height:1.28;margin-top:3px;">Acceso sin depender de la consulta física.</div>
-            </div>
-          </div>
-
-          <div style="flex:1;background:var(--blue-soft);border:2px solid var(--blue-dark);border-radius:13px;box-shadow:var(--shadow-sm);padding:16px 18px;display:flex;align-items:center;gap:14px;">
-            <span style="flex:0 0 44px;height:44px;border-radius:11px;background:rgba(20,70,122,.12);display:flex;align-items:center;justify-content:center;">
-              <svg viewBox="0 0 32 32" fill="none" style="width:26px;height:26px;" stroke="var(--blue-dark)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4l11 4v7c0 7-4.7 11.3-11 13C9.7 26.3 5 22 5 15V8l11-4Z"/><path d="M12 15.5l2.6 2.6L21 12"/></svg>
-            </span>
-            <div>
-              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:25px;color:var(--blue-dark);">Proteger las piezas</div>
-              <div style="font-size:24px;color:var(--ink-soft);line-height:1.28;margin-top:3px;">Menos manipulación innecesaria.</div>
-            </div>
-          </div>
-
-          <div style="flex:1;background:var(--blue-soft);border:2px solid var(--blue-dark);border-radius:13px;box-shadow:var(--shadow-sm);padding:16px 18px;display:flex;align-items:center;gap:14px;">
-            <span style="flex:0 0 44px;height:44px;border-radius:11px;background:rgba(20,70,122,.12);display:flex;align-items:center;justify-content:center;">
-              <svg viewBox="0 0 32 32" fill="none" style="width:26px;height:26px;" stroke="var(--blue-dark)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4l16 9-7 2.5L17 22 11 4z"/><path d="M17 19l7 8"/></svg>
-            </span>
-            <div>
-              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:25px;color:var(--blue-dark);">Activar el aprendizaje</div>
-              <div style="font-size:24px;color:var(--ink-soft);line-height:1.28;margin-top:3px;">Exploración visual, autónoma e interactiva.</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
     </div>
 
-    <!-- FRANJA INFERIOR -->
-    <div style="margin-top:18px;display:flex;align-items:center;gap:26px;background:var(--ink);color:#fff;border-radius:15px;padding:20px 32px;box-shadow:6px 6px 0 rgba(61,102,34,.26);">
-      <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:36px;letter-spacing:.02em;flex:0 0 auto;">MUVIPAT</span>
-      <span style="width:2px;height:44px;background:rgba(255,255,255,.22);flex:0 0 auto;"></span>
-      <span style="font-size:24px;color:#eef1ea;line-height:1.3;">De colección restringida a <b style="color:#b8e08a;font-weight:700;">complemento digital</b> accesible, interactivo y docente.</span>
+    <div class="bridge-slide-closing">
+      <span>Acceso</span><span class="sep">·</span><span>Observación</span><span class="sep">·</span><span>Aprendizaje</span>
     </div>
 
   </div>
@@ -764,28 +585,46 @@
 <section data-section="Metodología" data-screen-label="Metodología">
   <div class="s">
     <div class="kicker"><span class="num">04</span> Metodología</div>
-    <h2 class="title-lg">De la pieza física al recurso docente</h2>
-    <div class="method-slide-flow" style="margin-top:28px;">
-      <div class="method-slide-step"><span class="si">01</span><h3>Colección física</h3></div>
-      <div class="method-slide-arrow">→</div>
-      <div class="method-slide-step"><span class="si">02</span><h3>Selección de piezas</h3>
-        <p>Criterios científicos y técnicos</p>
+    <h2 class="title-lg">Metodología de desarrollo</h2>
+    <p class="method-slide-sub">De pieza seleccionada a recurso web interactivo</p>
+    <div class="method-slide-flow">
+      <div class="method-slide-origin">
+        <span class="method-slide-origin-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="5.5" r="3"/><circle cx="18.5" cy="18.5" r="3"/><line x1="7.6" y1="7.6" x2="16.4" y2="16.4"/></svg></span>
+        <span>Colección física</span>
       </div>
       <div class="method-slide-arrow">→</div>
-      <div class="method-slide-step hl"><span class="si">03</span><h3>Escaneado 3D</h3>
+      <div class="method-slide-step"><span class="si">01</span>
+        <span class="method-slide-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 4 9l4.5 9.5L18 14z"/><circle cx="9.5" cy="9.5" r="1.4"/></svg></span>
+        <h3>Selección de piezas</h3>
+        <p>Interés científico, educativo y técnico</p>
+      </div>
+      <div class="method-slide-arrow">→</div>
+      <div class="method-slide-step hl"><span class="si">02</span>
+        <span class="method-slide-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="9" rx="2"/><circle cx="12" cy="13.5" r="2.6"/><path d="M7 9V7a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/></svg></span>
+        <h3>Escaneado 3D</h3>
         <p style="font-family:'JetBrains Mono',monospace;color:var(--blue-dark);">Creality CR-Scan Raptor</p>
       </div>
       <div class="method-slide-arrow">→</div>
-      <div class="method-slide-step"><span class="si">04</span><h3>Procesado y optimización</h3></div>
+      <div class="method-slide-step"><span class="si">03</span>
+        <span class="method-slide-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.6v9.8L12 21l-8-4.6V7.6L12 3z"/><path d="M4 7.6L12 12l8-4.4M12 12v9M8 5.7l8 4.6M16 5.7l-8 4.6"/></svg></span>
+        <h3>Procesado</h3>
+        <p>Limpieza y preparación del modelo</p>
+      </div>
       <div class="method-slide-arrow">→</div>
-      <div class="method-slide-step"><span class="si">05</span><h3>Integración web</h3></div>
+      <div class="method-slide-step"><span class="si">04</span>
+        <span class="method-slide-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="7.5"/><path d="M12 13l3.2-3.2M9 4.5h6"/></svg></span>
+        <h3>Optimización</h3>
+        <p>Calidad morfológica + rendimiento web</p>
+      </div>
       <div class="method-slide-arrow">→</div>
-      <div class="method-slide-step end"><span class="si">06</span><h3>Recurso docente</h3>
-        <p style="font-size:18px;margin-top:4px;">MPA · data.js · GitHub Pages</p>
+      <div class="method-slide-step end"><span class="si">05</span>
+        <span class="method-slide-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M3 8.5h18"/><circle cx="6" cy="6.5" r=".6" fill="var(--green)" stroke="none"/><circle cx="8.4" cy="6.5" r=".6" fill="var(--green)" stroke="none"/></svg></span>
+        <h3>Integración web</h3>
+        <p style="font-size:18px;">HTML · CSS · JavaScript · model-viewer</p>
       </div>
     </div>
-    <div style="flex:1;min-height:0;margin-top:18px;border:2px solid var(--ink);border-radius:13px;overflow:hidden;position:relative;box-shadow:var(--shadow);">
-      <img src="assets/proceso-escaneado.png" alt="Proceso de escaneado 3D" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+    <div class="method-slide-shot">
+      <img src="assets/proceso-escaneado.png" alt="Proceso de escaneado 3D" onerror="this.style.display='none'">
     </div>
   </div>
 </section>
@@ -891,25 +730,39 @@
 <!-- ================= 9 · CONCLUSIONES ================= -->
 <section data-section="Conclusiones" data-screen-label="Conclusiones">
   <div class="s">
-    <div class="kicker"><span class="num">08</span> Conclusiones</div>
     <h2 class="title-lg">Conclusiones del proyecto</h2>
-    <div class="conclusions-slide-cards">
-      <div class="conclusions-slide-card g">
-        <div class="n">01</div><div class="bar"></div>
-        <p>Es posible desarrollar un museo virtual paleopatológico con tecnologías web estándar y modelos 3D.</p>
-      </div>
-      <div class="conclusions-slide-card b">
-        <div class="n">02</div><div class="bar"></div>
-        <p>MUVIPAT amplía la consulta de piezas y reduce la manipulación física del material osteológico.</p>
-      </div>
-      <div class="conclusions-slide-card g">
-        <div class="n">03</div><div class="bar"></div>
-        <p>La formación en Biología puede enriquecerse mediante digitalización 3D, desarrollo web, datos y comunicación científica.</p>
-      </div>
+
+    <div class="concl-timeline">
+      <div class="concl-dot g fragment" data-fragment-index="1"><span>01</span><span class="lbl">Viabilidad</span></div>
+      <div class="concl-seg fragment" data-fragment-index="2"></div>
+      <div class="concl-dot b fragment" data-fragment-index="2"><span>02</span><span class="lbl">Acceso</span></div>
+      <div class="concl-seg fragment" data-fragment-index="3"></div>
+      <div class="concl-dot g fragment" data-fragment-index="3"><span>03</span><span class="lbl">Formación</span></div>
+      <div class="concl-seg fragment" data-fragment-index="4"></div>
+      <div class="concl-dot b fragment" data-fragment-index="4"><span>04</span><span class="lbl">Proyección</span></div>
     </div>
-    <div class="conclusions-slide-general">
-      <span class="tag">conclusión general</span>
-      <p>El prototipo establece una base funcional y ampliable para conectar patrimonio, investigación, docencia y tecnología.</p>
+
+    <div class="concl-cards">
+      <div class="concl-card g fragment current-visible" data-fragment-index="1">
+        <span class="n">01</span>
+        <h3>Viabilidad técnica y científica</h3>
+        <p>El trabajo demuestra la viabilidad de desarrollar un museo virtual paleopatológico funcional mediante tecnologías web estándar, modelos tridimensionales y una estructura de contenidos científicos organizada.</p>
+      </div>
+      <div class="concl-card b fragment current-visible" data-fragment-index="2">
+        <span class="n">02</span>
+        <h3>Consulta digital y contextualización</h3>
+        <p>MUVIPAT amplía la consulta digital de piezas osteológicas y las integra en fichas, imágenes, referencias y recursos educativos, reduciendo la dependencia del acceso físico sin sustituir el valor de la colección original.</p>
+      </div>
+      <div class="concl-card g fragment current-visible" data-fragment-index="3">
+        <span class="n">03</span>
+        <h3>Formación en Biología</h3>
+        <p>La formación en Biología puede enriquecerse mediante la integración de digitalización 3D, desarrollo web, gestión de datos y comunicación científica.</p>
+      </div>
+      <div class="concl-card final fragment current-visible" data-fragment-index="4">
+        <span class="n">04</span>
+        <h3>Proyección final</h3>
+        <p>MUVIPAT muestra que la digitalización no solo permite conservar y visualizar una colección, sino también reactivar su valor científico, docente y social.</p>
+      </div>
     </div>
   </div>
 </section>
