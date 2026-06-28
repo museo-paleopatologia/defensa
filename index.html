@@ -348,121 +348,166 @@
 </section>
 
 <!-- ================= 2 · PROBLEMA ================= -->
-<section data-section="Problema" data-screen-label="Problema">
-  <div class="s">
-    <div class="kicker"><span class="num">01</span> El problema</div>
-    <h2 class="title-lg">Limitaciones de las colecciones paleopatológicas</h2>
-    <p style="font-size:24px;color:var(--ink-soft);margin-top:10px;line-height:1.4;">La paleopatología depende de la observación directa de piezas físicas reales.</p>
+<section data-section="Problema" data-screen-label="Problema" style="width:1920px;height:1080px;--bg:#cdc8b9;--paper:#f4efe5;--panel:#efe8da;--ink:#26261f;--ink-soft:#5f5d52;--green:#3d6622;--blue-dark:#14467a;--blue-soft:#cadcef;--line:#bfae93;--shadow:5px 5px 0 rgba(38,38,31,.10);--shadow-sm:3px 3px 0 rgba(38,38,31,.07);background:var(--bg);font-family:'Hanken Grotesk',system-ui,sans-serif;color:var(--ink);position:relative;overflow:hidden;display:flex;flex-direction:column;box-sizing:border-box;">
 
-    <div style="display:grid;grid-template-columns:1fr 32px 1.2fr 32px 1fr;gap:0;flex:1;min-height:0;margin-top:24px;align-items:stretch;">
+  <!-- Top badge -->
+  <div style="position:absolute;top:34px;left:50%;transform:translateX(-50%);z-index:5;display:flex;align-items:center;gap:11px;background:#fbf9f4;border:2.5px solid var(--blue-dark);border-radius:999px;padding:11px 28px;box-shadow:3px 3px 0 rgba(20,70,122,.18);">
+    <span style="width:11px;height:11px;border-radius:50%;background:var(--green);display:inline-block;"></span>
+    <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;letter-spacing:.16em;color:var(--blue-dark);">PROBLEMA</span>
+  </div>
+
+  <div class="s" style="flex:1;display:flex;flex-direction:column;padding:96px 84px 72px;min-height:0;">
+
+    <!-- Kicker -->
+    <div class="kicker" style="display:flex;align-items:center;gap:14px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:21px;letter-spacing:.14em;text-transform:uppercase;color:var(--green);">
+      <span class="num" style="font-size:24px;letter-spacing:0;">01</span>
+      <span>El problema</span>
+      <span style="flex:0 0 56px;height:2.5px;background:var(--green);border-radius:2px;"></span>
+    </div>
+
+    <h2 class="title-lg" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:62px;line-height:1.04;letter-spacing:-.01em;margin-top:12px;text-wrap:balance;">Limitaciones de las colecciones paleopatológicas</h2>
+    <p style="font-size:24px;color:var(--ink-soft);margin-top:12px;line-height:1.4;">La paleopatología depende de la observación directa de piezas físicas reales.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 60px 1.22fr 60px 1fr;flex:1;min-height:0;margin-top:30px;align-items:stretch;">
 
       <!-- COL 1: ORIGEN -->
-      <div style="background:var(--paper);border:2.5px solid var(--ink);border-radius:16px;box-shadow:var(--shadow);padding:28px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;letter-spacing:.12em;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:8px;">
-          <span style="width:14px;height:14px;border-radius:4px;background:var(--green);display:inline-block;"></span>Origen
+      <div style="display:flex;flex-direction:column;">
+        <div style="display:flex;align-items:center;gap:9px;height:24px;margin-bottom:14px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;letter-spacing:.14em;text-transform:uppercase;color:var(--green);">
+          <span style="width:13px;height:13px;border-radius:50%;background:var(--green);display:inline-block;"></span>Origen
         </div>
-        <svg viewBox="0 0 64 64" fill="none" style="width:72px;height:72px;margin-top:4px;" stroke="#3d6622" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <ellipse cx="32" cy="14" rx="10" ry="13" stroke="#3d6622" stroke-width="2.2"/>
-          <path d="M22 14c0 0-4 6-4 16s2 18 4 20M42 14c0 0 4 6 4 16s-2 18-4 20M22 50c0 0 4 4 10 4s10-4 10-4" stroke-width="2.2"/>
-          <path d="M26 30c0 0 2 4 6 4s6-4 6-4" stroke-width="2"/>
-          <line x1="32" y1="34" x2="32" y2="50" stroke-width="2"/>
-        </svg>
-        <h3 style="font-size:26px;line-height:1.15;">Colecciones físicas osteológicas</h3>
-        <p style="font-size:21px;color:var(--ink-soft);line-height:1.45;">Material de alto valor científico y docente cuyo estudio requiere observación directa.</p>
+        <div style="flex:1;background:var(--panel);border:2.5px solid var(--ink);border-radius:18px;box-shadow:var(--shadow);padding:30px 26px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:20px;">
+          <svg viewBox="0 0 64 64" fill="none" style="width:84px;height:84px;" stroke="var(--green)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M32 8C20 8 13 16 13 27c0 6 2.3 10.4 5.8 13.4.9.8 1.4 1.7 1.4 2.8V47c0 1.7 1.3 3 3 3 .8 0 1.5.7 1.5 1.5V53c0 1.7 1.3 3 3 3h6.6c1.7 0 3-1.3 3-3v-1.5c0-.8.7-1.5 1.5-1.5 1.7 0 3-1.3 3-3v-3.8c0-1.1.5-2 1.4-2.8C48.7 37.4 51 33 51 27 51 16 44 8 32 8Z"/>
+            <circle cx="23.5" cy="28" r="5.2" fill="var(--green)" stroke="none"/>
+            <circle cx="40.5" cy="28" r="5.2" fill="var(--green)" stroke="none"/>
+            <path d="M32 36l-3.2 6.2h6.4L32 36Z" fill="var(--green)" stroke="none"/>
+            <path d="M27.5 50.5v5.5M32 50.5v5.5M36.5 50.5v5.5"/>
+          </svg>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:28px;line-height:1.16;">Colecciones físicas osteológicas</h3>
+          <p style="font-size:21px;color:var(--ink-soft);line-height:1.45;">Material de alto valor científico y docente cuyo estudio requiere observación directa.</p>
+        </div>
       </div>
 
-      <!-- FLECHA -->
-      <div style="display:flex;align-items:center;justify-content:center;color:var(--green);font-size:32px;font-weight:700;">→</div>
+      <!-- ARROW -->
+      <div style="display:flex;flex-direction:column;">
+        <div style="height:38px;"></div>
+        <div style="flex:1;display:flex;align-items:center;justify-content:center;">
+          <svg viewBox="0 0 40 40" fill="none" style="width:38px;height:38px;" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 20h26M24 11l9 9-9 9"/>
+          </svg>
+        </div>
+      </div>
 
       <!-- COL 2: FACTORES -->
-      <div style="display:flex;flex-direction:column;gap:0;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);display:flex;align-items:center;gap:8px;margin-bottom:12px;">
-          <span style="width:14px;height:14px;border-radius:4px;background:var(--ink-soft);display:inline-block;"></span>Factores limitantes
+      <div style="display:flex;flex-direction:column;">
+        <div style="display:flex;align-items:center;gap:9px;height:24px;margin-bottom:14px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);">
+          <span style="width:13px;height:13px;border-radius:3px;background:var(--ink-soft);display:inline-block;"></span>Factores limitantes
         </div>
-        <div style="display:flex;flex-direction:column;gap:10px;flex:1;">
+        <div style="display:flex;flex-direction:column;gap:14px;flex:1;min-height:0;">
 
-          <div style="flex:1;background:var(--paper);border:2px solid var(--ink);border-radius:12px;box-shadow:var(--shadow-sm);padding:14px 18px;display:flex;align-items:center;gap:14px;">
-            <svg viewBox="0 0 36 36" fill="none" style="width:36px;height:36px;flex:0 0 36px;" stroke="#3d6622" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="7" y="16" width="22" height="16" rx="2"/>
-              <path d="M12 16v-3a6 6 0 0 1 12 0v3"/>
-              <circle cx="18" cy="23" r="2" fill="#3d6622" stroke="none"/>
-              <line x1="18" y1="25" x2="18" y2="28"/>
-            </svg>
+          <div style="flex:1;background:var(--paper);border:2px solid var(--ink);border-radius:14px;box-shadow:var(--shadow-sm);padding:16px 22px;display:flex;align-items:center;gap:18px;">
+            <span style="flex:0 0 50px;height:50px;border-radius:12px;background:rgba(61,102,34,.10);display:flex;align-items:center;justify-content:center;">
+              <svg viewBox="0 0 36 36" fill="none" style="width:30px;height:30px;" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="7" y="16" width="22" height="15" rx="2.5"/>
+                <path d="M12 16v-3a6 6 0 0 1 12 0v3"/>
+                <circle cx="18" cy="22" r="1.8" fill="var(--green)" stroke="none"/>
+                <line x1="18" y1="24" x2="18" y2="27"/>
+              </svg>
+            </span>
             <div>
-              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:var(--ink);">Acceso restringido</div>
-              <div style="font-size:18px;color:var(--ink-soft);margin-top:2px;">Permisos, conservación y localización fija</div>
+              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:23px;color:var(--ink);">Acceso restringido</div>
+              <div style="font-size:18px;color:var(--ink-soft);margin-top:3px;">Gestión, conservación y ética</div>
             </div>
           </div>
 
-          <div style="flex:1;background:var(--paper);border:2px solid var(--ink);border-radius:12px;box-shadow:var(--shadow-sm);padding:14px 18px;display:flex;align-items:center;gap:14px;">
-            <svg viewBox="0 0 36 36" fill="none" style="width:36px;height:36px;flex:0 0 36px;" stroke="#005fa3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 4 L32 12 L32 24 L18 32 L4 24 L4 12 Z"/>
-              <line x1="18" y1="14" x2="18" y2="22"/>
-              <circle cx="18" cy="26" r="1.5" fill="#005fa3" stroke="none"/>
-            </svg>
+          <div style="flex:1;background:var(--paper);border:2px solid var(--ink);border-radius:14px;box-shadow:var(--shadow-sm);padding:16px 22px;display:flex;align-items:center;gap:18px;">
+            <span style="flex:0 0 50px;height:50px;border-radius:12px;background:rgba(61,102,34,.10);display:flex;align-items:center;justify-content:center;">
+              <svg viewBox="0 0 36 36" fill="none" style="width:30px;height:30px;" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 4c-5.5 0-10 4.3-10 9.7C8 21 18 32 18 32s10-11 10-18.3C28 8.3 23.5 4 18 4Z"/>
+                <circle cx="18" cy="13.5" r="3.4"/>
+              </svg>
+            </span>
             <div>
-              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:var(--ink);">Conservación y fragilidad</div>
-              <div style="font-size:18px;color:var(--ink-soft);margin-top:2px;">Deterioro por manipulación y exposición</div>
+              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:23px;color:var(--ink);">Dispersión geográfica</div>
+              <div style="font-size:18px;color:var(--ink-soft);margin-top:3px;">Materiales dispersos y de ubicación fija</div>
             </div>
           </div>
 
-          <div style="flex:1;background:var(--paper);border:2px solid var(--ink);border-radius:12px;box-shadow:var(--shadow-sm);padding:14px 18px;display:flex;align-items:center;gap:14px;">
-            <svg viewBox="0 0 36 36" fill="none" style="width:36px;height:36px;flex:0 0 36px;" stroke="#14467a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="4" y="8" width="28" height="20" rx="2"/>
-              <path d="M10 18h6M10 22h10"/>
-              <rect x="18" y="12" width="8" height="10" rx="1" stroke-width="1.5"/>
-            </svg>
+          <div style="flex:1;background:var(--paper);border:2px solid var(--ink);border-radius:14px;box-shadow:var(--shadow-sm);padding:16px 22px;display:flex;align-items:center;gap:18px;">
+            <span style="flex:0 0 50px;height:50px;border-radius:12px;background:rgba(61,102,34,.10);display:flex;align-items:center;justify-content:center;">
+              <svg viewBox="0 0 36 36" fill="none" style="width:30px;height:30px;" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="8" width="26" height="20" rx="2.5"/>
+                <path d="M9 24l6-6 4 4 3-3 5 5"/>
+                <circle cx="13" cy="14" r="2.2"/>
+              </svg>
+            </span>
             <div>
-              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:var(--ink);">Representación limitada</div>
-              <div style="font-size:18px;color:var(--ink-soft);margin-top:2px;">Las imágenes 2D no transmiten la morfología</div>
+              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:23px;color:var(--ink);">Representación limitada</div>
+              <div style="font-size:18px;color:var(--ink-soft);margin-top:3px;">Imágenes 2D, descripciones escritas o visitas puntuales</div>
             </div>
           </div>
 
-          <div style="flex:1;background:var(--blue-soft);border:2px solid var(--blue-dark);border-radius:12px;box-shadow:var(--shadow-sm);padding:14px 18px;display:flex;align-items:center;gap:14px;">
-            <svg viewBox="0 0 36 36" fill="none" style="width:36px;height:36px;flex:0 0 36px;" stroke="#14467a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="4" y="8" width="28" height="18" rx="2"/>
-              <path d="M12 26v4M24 26v4M8 30h20"/>
-              <path d="M13 17l3 3 7-7" stroke-width="2.2"/>
-            </svg>
+          <div style="flex:1;background:var(--blue-soft);border:2px solid var(--blue-dark);border-radius:14px;box-shadow:3px 3px 0 rgba(20,70,122,.16);padding:16px 22px;display:flex;align-items:center;gap:18px;">
+            <span style="flex:0 0 50px;height:50px;border-radius:12px;background:rgba(20,70,122,.12);display:flex;align-items:center;justify-content:center;">
+              <svg viewBox="0 0 36 36" fill="none" style="width:30px;height:30px;" stroke="var(--blue-dark)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M30 12a13 13 0 0 0-23-3M6 6v6h6"/>
+                <path d="M6 24a13 13 0 0 0 23 3M30 30v-6h-6"/>
+              </svg>
+            </span>
             <div>
-              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:var(--blue-dark);">Desajuste con métodos activos</div>
-              <div style="font-size:18px;color:var(--ink-soft);margin-top:2px;">Modelos interactivos y autónomos no cubiertos</div>
+              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:23px;color:var(--blue-dark);">Desfase con la transformación digital</div>
+              <div style="font-size:18px;color:var(--ink-soft);margin-top:3px;">Ausencia de métodos activos de aprendizaje</div>
             </div>
           </div>
 
         </div>
       </div>
 
-      <!-- FLECHA -->
-      <div style="display:flex;align-items:center;justify-content:center;color:var(--green);font-size:32px;font-weight:700;">→</div>
+      <!-- ARROW -->
+      <div style="display:flex;flex-direction:column;">
+        <div style="height:38px;"></div>
+        <div style="flex:1;display:flex;align-items:center;justify-content:center;">
+          <svg viewBox="0 0 40 40" fill="none" style="width:38px;height:38px;" stroke="var(--blue-dark)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 20h26M24 11l9 9-9 9"/>
+          </svg>
+        </div>
+      </div>
 
       <!-- COL 3: CONSECUENCIAS -->
-      <div style="background:var(--blue-soft);border:3px solid var(--blue-dark);border-radius:16px;box-shadow:7px 7px 0 rgba(20,70,122,.20);padding:28px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-dark);display:flex;align-items:center;gap:8px;">
-          <span style="width:14px;height:14px;border-radius:4px;background:var(--blue-dark);display:inline-block;"></span>Consecuencias
+      <div style="display:flex;flex-direction:column;">
+        <div style="display:flex;align-items:center;gap:9px;height:24px;margin-bottom:14px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-dark);">
+          <span style="width:13px;height:13px;border-radius:50%;background:var(--blue-dark);display:inline-block;"></span>Consecuencias
         </div>
-        <div style="display:flex;flex-direction:column;gap:12px;flex:1;width:100%;">
-          <div style="background:var(--paper);border-radius:12px;padding:16px 18px;border:1.5px solid var(--blue-dark);text-align:left;">
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
-              <svg viewBox="0 0 28 28" fill="none" style="width:28px;height:28px;flex:0 0 28px;" stroke="#14467a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 4a7 7 0 0 1 0 14M14 4a7 7 0 0 0 0 14M6 18c0 0 2 6 8 6s8-6 8-6"/>
-                <line x1="14" y1="18" x2="14" y2="24"/>
+        <div style="flex:1;background:var(--blue-soft);border:3px solid var(--blue-dark);border-radius:18px;box-shadow:6px 6px 0 rgba(20,70,122,.20);padding:26px 24px;display:flex;flex-direction:column;gap:16px;">
+
+          <div style="flex:1;background:#fbf9f4;border-radius:14px;padding:24px 24px;border:1.5px solid var(--blue-dark);display:flex;align-items:center;gap:18px;">
+            <span style="flex:0 0 52px;height:52px;border-radius:12px;background:rgba(20,70,122,.10);display:flex;align-items:center;justify-content:center;">
+              <svg viewBox="0 0 28 28" fill="none" style="width:30px;height:30px;" stroke="var(--blue-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 6 3 11l11 5 11-5-11-5Z"/>
+                <path d="M8 13.5V19c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5"/>
+                <line x1="25" y1="11" x2="25" y2="17"/>
               </svg>
-              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:var(--blue-dark);">En docencia</div>
+            </span>
+            <div>
+              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:25px;color:var(--blue-dark);margin-bottom:6px;">En docencia</div>
+              <div style="font-size:22px;color:var(--ink-soft);line-height:1.38;">Menor acceso a material real · aprendizaje menos activo · dificultad morfológica</div>
             </div>
-            <div style="font-size:20px;color:var(--ink-soft);line-height:1.45;">Menor acceso a material real · aprendizaje menos activo · dificultad morfológica</div>
           </div>
-          <div style="background:var(--paper);border-radius:12px;padding:16px 18px;border:1.5px solid var(--blue-dark);text-align:left;">
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
-              <svg viewBox="0 0 28 28" fill="none" style="width:28px;height:28px;flex:0 0 28px;" stroke="#14467a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="14" cy="14" r="5"/>
-                <path d="M14 4v3M14 21v3M4 14h3M21 14h3"/>
-                <path d="M7 7l2 2M19 19l2 2M7 21l2-2M19 9l2-2"/>
+
+          <div style="flex:1;background:#fbf9f4;border-radius:14px;padding:24px 24px;border:1.5px solid var(--blue-dark);display:flex;align-items:center;gap:18px;">
+            <span style="flex:0 0 52px;height:52px;border-radius:12px;background:rgba(20,70,122,.10);display:flex;align-items:center;justify-content:center;">
+              <svg viewBox="0 0 28 28" fill="none" style="width:30px;height:30px;" stroke="var(--blue-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="7"/>
+                <line x1="17" y1="17" x2="23" y2="23"/>
+                <path d="M12 9v6M9 12h6"/>
               </svg>
-              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:var(--blue-dark);">En investigación</div>
+            </span>
+            <div>
+              <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:25px;color:var(--blue-dark);margin-bottom:6px;">En comunicación científica</div>
+              <div style="font-size:22px;color:var(--ink-soft);line-height:1.38;">Baja visibilidad de colecciones · menor comparación y colaboración científica</div>
             </div>
-            <div style="font-size:20px;color:var(--ink-soft);line-height:1.45;">Baja visibilidad de colecciones · menor comparación y colaboración científica</div>
           </div>
+
         </div>
       </div>
 
