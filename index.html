@@ -269,23 +269,30 @@
 .reveal .disc3-stage .fragment.draw.visible{ stroke-dashoffset:0; }
 
 /* ===================================================== LIMITACIONES */
-.limitations-slide-headrow{ display:grid; grid-template-columns:1fr 56px 1fr; margin-top:26px; }
-.limitations-slide-h{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:18px;
-  letter-spacing:.12em; text-transform:uppercase; display:flex; align-items:center; gap:10px; }
-.limitations-slide-h .sq{ width:16px; height:16px; border-radius:5px; display:inline-block; }
-.limitations-slide-h.lim{ color:var(--ink-soft); }
-.limitations-slide-h.fut{ color:var(--green); }
-.limitations-slide-grid{ display:flex; flex-direction:column; gap:12px; margin-top:12px; flex:1; min-height:0; }
-.limitations-slide-row{ display:grid; grid-template-columns:1fr 56px 1fr; align-items:stretch; flex:1; }
-.limitations-slide-cell{ display:flex; align-items:center; gap:14px; border-radius:12px; padding:0 24px;
-  font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:24px; line-height:1.14; box-shadow:var(--shadow-sm); }
-.limitations-slide-cell .m{ width:13px; height:13px; border-radius:50%; flex:0 0 13px; }
-.limitations-slide-lim{ background:var(--paper); border:2px solid var(--gray-line); color:var(--ink-soft); }
-.limitations-slide-lim .m{ background:var(--ink-soft); }
-.limitations-slide-fut{ background:var(--green-soft); border:2px solid var(--green); color:#1e3a10; }
-.limitations-slide-fut .m{ background:var(--green); }
-.limitations-slide-arrow{ display:flex; align-items:center; justify-content:center; color:var(--green);
-  font-size:28px; font-weight:700; }
+.roadmap-track{ display:flex; align-items:stretch; gap:0; margin-top:30px; flex:1; min-height:0; }
+.roadmap-station{ flex:1; min-width:0; background:var(--paper); border:2.5px solid var(--ink); border-radius:16px;
+  box-shadow:var(--shadow); padding:22px 24px; display:flex; flex-direction:column; gap:14px; }
+.roadmap-head{ display:flex; align-items:center; gap:14px; }
+.roadmap-num{ font-family:'JetBrains Mono',monospace; font-weight:700; font-size:32px; color:var(--blue-dark); flex:0 0 auto; }
+.roadmap-ico{ width:42px; height:42px; border-radius:11px; background:rgba(20,70,122,.12);
+  display:flex; align-items:center; justify-content:center; flex:0 0 42px; }
+.roadmap-ico svg{ width:24px; height:24px; }
+.roadmap-head h3{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:23px; line-height:1.12; color:var(--ink); }
+.roadmap-level{ flex:1; border-radius:12px; padding:14px 18px; display:flex; flex-direction:column; gap:5px; justify-content:center; }
+.roadmap-level .tag{ font-family:'JetBrains Mono',monospace; font-size:14px; letter-spacing:.08em; text-transform:uppercase; font-weight:700; }
+.roadmap-level p{ font-size:19px; line-height:1.28; font-weight:500; }
+.roadmap-level.lim{ background:var(--bg); border:2px solid var(--gray-line); }
+.roadmap-level.lim .tag{ color:var(--ink-soft); }
+.roadmap-level.lim p{ color:var(--ink-soft); }
+.roadmap-level.fut{ background:var(--green-soft); border:2px solid var(--green); }
+.roadmap-level.fut .tag{ color:var(--green); }
+.roadmap-level.fut p{ color:#1e3a10; }
+.roadmap-arrow{ flex:0 0 50px; display:flex; align-items:center; justify-content:center; color:var(--green);
+  font-size:30px; font-weight:700; }
+
+/* Aparición progresiva de estaciones (fade/slide sobrio) */
+.reveal .roadmap-station.fragment{ opacity:0; transform:translateY(24px); transition:opacity .5s ease, transform .5s ease; }
+.reveal .roadmap-station.fragment.visible{ opacity:1; transform:translateY(0); }
 
 /* ===================================================== CONCLUSIONES */
 .conclusions-slide-cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:42px; margin-top:32px; flex:1; min-height:0; }
@@ -846,37 +853,36 @@
 <section data-section="Limitaciones" data-screen-label="Limitaciones">
   <div class="s">
     <div class="kicker"><span class="num">07</span> Limitaciones y líneas futuras</div>
-    <h2 class="title-lg">Alcance actual y líneas de desarrollo</h2>
-    <div class="limitations-slide-headrow">
-      <div class="limitations-slide-h lim"><span class="sq" style="background:var(--ink-soft)"></span>Limitación actual</div>
-      <div></div>
-      <div class="limitations-slide-h fut"><span class="sq" style="background:var(--green)"></span>Línea futura</div>
-    </div>
-    <div class="limitations-slide-grid">
-      <div class="limitations-slide-row">
-        <div class="limitations-slide-cell limitations-slide-lim"><span class="m"></span>Prototipo inicial</div>
-        <div class="limitations-slide-arrow">→</div>
-        <div class="limitations-slide-cell limitations-slide-fut"><span class="m"></span>Validación y consolidación funcional</div>
+    <h2 class="title-lg">Alcance actual y desarrollo futuro</h2>
+    <div class="roadmap-track">
+      <div class="roadmap-station fragment" data-fragment-index="1">
+        <div class="roadmap-head">
+          <span class="roadmap-num">01</span>
+          <span class="roadmap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4Z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg></span>
+          <h3>Alcance del prototipo</h3>
+        </div>
+        <div class="roadmap-level lim"><span class="tag">Limitación actual</span><p>Prototipo inicial · colección parcial</p></div>
+        <div class="roadmap-level fut"><span class="tag">Línea futura</span><p>Consolidación funcional · ampliación progresiva</p></div>
       </div>
-      <div class="limitations-slide-row">
-        <div class="limitations-slide-cell limitations-slide-lim"><span class="m"></span>Colección parcial</div>
-        <div class="limitations-slide-arrow">→</div>
-        <div class="limitations-slide-cell limitations-slide-fut"><span class="m"></span>Ampliación progresiva de piezas</div>
+      <div class="roadmap-arrow">→</div>
+      <div class="roadmap-station fragment" data-fragment-index="2">
+        <div class="roadmap-head">
+          <span class="roadmap-num">02</span>
+          <span class="roadmap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v2.4M12 18.6V21M3 12h2.4M18.6 12H21M5.6 5.6l1.7 1.7M16.7 16.7l1.7 1.7M18.4 5.6l-1.7 1.7M7.3 16.7l-1.7 1.7"/></svg></span>
+          <h3>Evaluación y rendimiento</h3>
+        </div>
+        <div class="roadmap-level lim"><span class="tag">Limitación actual</span><p>Modelos optimizables · usabilidad no evaluada</p></div>
+        <div class="roadmap-level fut"><span class="tag">Línea futura</span><p>Mejora técnica · pruebas con usuarios</p></div>
       </div>
-      <div class="limitations-slide-row">
-        <div class="limitations-slide-cell limitations-slide-lim"><span class="m"></span>Modelos optimizables</div>
-        <div class="limitations-slide-arrow">→</div>
-        <div class="limitations-slide-cell limitations-slide-fut"><span class="m"></span>Mejora de calidad y rendimiento</div>
-      </div>
-      <div class="limitations-slide-row">
-        <div class="limitations-slide-cell limitations-slide-lim"><span class="m"></span>Sin evaluación de usuarios</div>
-        <div class="limitations-slide-arrow">→</div>
-        <div class="limitations-slide-cell limitations-slide-fut"><span class="m"></span>Estudio de usabilidad real</div>
-      </div>
-      <div class="limitations-slide-row">
-        <div class="limitations-slide-cell limitations-slide-lim"><span class="m"></span>Protocolos pendientes</div>
-        <div class="limitations-slide-arrow">→</div>
-        <div class="limitations-slide-cell limitations-slide-fut"><span class="m"></span>Definición de acceso, licencias y ética</div>
+      <div class="roadmap-arrow">→</div>
+      <div class="roadmap-station fragment" data-fragment-index="3">
+        <div class="roadmap-head">
+          <span class="roadmap-num">03</span>
+          <span class="roadmap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2.2 5.8L9 17l2.2-5.8L15 9Z"/></svg></span>
+          <h3>Marco de crecimiento</h3>
+        </div>
+        <div class="roadmap-level lim"><span class="tag">Limitación actual</span><p>Protocolos de acceso pendientes</p></div>
+        <div class="roadmap-level fut"><span class="tag">Línea futura</span><p>Licencias · ética · impresión 3D · realidad aumentada</p></div>
       </div>
     </div>
   </div>
