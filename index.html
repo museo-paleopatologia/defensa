@@ -235,28 +235,38 @@
 .pop-bar{ width:36px; height:4px; border-radius:3px; background:var(--green); margin-top:10px; }
 
 /* ===================================================== DISCUSIÓN */
-.disc3-stage{ position:relative; flex:1; min-height:0; margin-top:20px; }
-.disc3-svg{ position:absolute; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+.disc3-stage{ flex:1; min-height:0; margin-top:26px; display:flex; align-items:center; justify-content:center; }
+.disc3-scale{ position:relative; width:1062px; height:630px; }
+.disc3-canvas{ position:absolute; left:0; top:0; width:1180px; height:700px; transform:scale(.9); transform-origin:top left; }
+.disc3-canvas > svg{ position:absolute; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; overflow:visible; }
 .disc3-hub{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:3;
-  width:310px; background:var(--ink); color:#fff; border-radius:18px;
-  box-shadow:6px 6px 0 rgba(61,102,34,.30); padding:26px 28px; text-align:center;
-  display:flex; flex-direction:column; gap:6px; }
-.disc3-hub .name{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:42px; letter-spacing:.03em; }
-.disc3-hub .sub{ font-size:20px; color:#b8e08a; line-height:1.25; }
-.disc3-card{ position:absolute; z-index:2; width:370px; background:var(--paper); border:2.5px solid var(--ink);
-  border-radius:14px; box-shadow:var(--shadow); padding:18px 22px; display:flex; flex-direction:column; gap:8px; }
-.disc3-card h4{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:24px; color:var(--ink);
-  line-height:1.08; display:flex; align-items:center; gap:11px; }
-.disc3-card h4 .sq{ width:15px; height:15px; border-radius:5px; flex:0 0 15px; }
-.disc3-card p{ font-size:20px; color:var(--ink-soft); line-height:1.32; }
+  width:380px; background:var(--ink); color:#fff; border-radius:18px;
+  box-shadow:7px 7px 0 rgba(61,102,34,.30); padding:30px 34px; text-align:center;
+  display:flex; flex-direction:column; gap:8px; }
+.disc3-hub .name{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:46px; letter-spacing:.03em; }
+.disc3-hub .sub{ font-size:22px; color:#b8e08a; line-height:1.28; }
+.disc3-card{ position:absolute; z-index:2; width:430px; background:var(--paper); border:2.5px solid var(--ink);
+  border-radius:14px; box-shadow:var(--shadow); padding:22px 26px; display:flex; flex-direction:column; gap:9px; }
+.disc3-card h4{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:28px; color:var(--ink);
+  line-height:1.08; display:flex; align-items:center; gap:12px; }
+.disc3-card h4 .sq{ width:16px; height:16px; border-radius:5px; flex:0 0 16px; }
+.disc3-card p{ font-size:22px; color:var(--ink-soft); line-height:1.32; }
 .disc3-card.top{ left:50%; top:0; transform:translateX(-50%); }
 .disc3-card.bl{ left:0; bottom:0; }
 .disc3-card.br{ right:0; bottom:0; }
-.disc3-caution{ display:flex; align-items:center; gap:14px; margin-top:14px; background:var(--blue-soft);
-  border:2px solid var(--blue-dark); border-radius:12px; padding:14px 22px; }
-.disc3-caution .tag{ font-family:'JetBrains Mono',monospace; font-size:16px; letter-spacing:.08em; text-transform:uppercase;
-  color:var(--blue-dark); border:2px solid var(--blue-dark); border-radius:999px; padding:6px 14px; flex:0 0 auto; font-weight:700; }
-.disc3-caution p{ font-size:22px; color:var(--ink-soft); line-height:1.34; }
+
+/* Aparición progresiva de tarjetas (igual patrón que el pentágono de Objetivos) */
+.reveal .disc3-card.fragment{ opacity:0; transition:opacity .5s ease, transform .55s cubic-bezier(.34,1.45,.5,1); }
+.reveal .disc3-card.top.fragment{ transform:translateX(-50%) scale(.55); }
+.reveal .disc3-card.bl.fragment, .reveal .disc3-card.br.fragment{ transform:scale(.55); }
+.reveal .disc3-card.fragment.visible{ opacity:1; }
+.reveal .disc3-card.top.fragment.visible{ transform:translateX(-50%) scale(1); }
+.reveal .disc3-card.bl.fragment.visible, .reveal .disc3-card.br.fragment.visible{ transform:scale(1); }
+
+/* Trazo progresivo de las conexiones hub → tarjeta */
+.reveal .disc3-stage .draw{ stroke-dashoffset:var(--len); transition:stroke-dashoffset .6s ease; }
+.reveal .disc3-stage .fragment.draw{ opacity:1; visibility:visible; }
+.reveal .disc3-stage .fragment.draw.visible{ stroke-dashoffset:0; }
 
 /* ===================================================== LIMITACIONES */
 .limitations-slide-headrow{ display:grid; grid-template-columns:1fr 56px 1fr; margin-top:26px; }
@@ -801,36 +811,33 @@
 <!-- ================= 7 · DISCUSIÓN ================= -->
 <section data-section="Discusión" data-screen-label="Discusión">
   <div class="s">
-    <div class="kicker"><span class="num">06</span> Discusión · interpretación</div>
     <h2 class="title-lg">Qué aporta MUVIPAT</h2>
     <div class="disc3-stage">
-      <svg class="disc3-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <g stroke="#9e9a92" stroke-width="1.8" vector-effect="non-scaling-stroke" fill="none">
-          <line x1="50" y1="50" x2="50" y2="15"></line>
-          <line x1="50" y1="50" x2="17" y2="85"></line>
-          <line x1="50" y1="50" x2="83" y2="85"></line>
-        </g>
-      </svg>
-      <div class="disc3-hub">
-        <span class="name">MUVIPAT</span>
-        <span class="sub">Plataforma educativa y patrimonial</span>
+      <div class="disc3-scale">
+      <div class="disc3-canvas">
+        <svg viewBox="0 0 1180 700">
+          <line class="fragment draw" data-fragment-index="1" style="--len:280"    x1="590" y1="350" x2="590" y2="70"  stroke="var(--green)"     stroke-width="3.4" stroke-linecap="round" stroke-dasharray="280"/>
+          <line class="fragment draw" data-fragment-index="2" style="--len:476" x1="590" y1="350" x2="215" y2="643" stroke="var(--blue-dark)" stroke-width="3.4" stroke-linecap="round" stroke-dasharray="476"/>
+          <line class="fragment draw" data-fragment-index="3" style="--len:476" x1="590" y1="350" x2="965" y2="643" stroke="var(--ink-soft)"  stroke-width="3.4" stroke-linecap="round" stroke-dasharray="476"/>
+        </svg>
+        <div class="disc3-hub">
+          <span class="name">MUVIPAT</span>
+          <span class="sub">Plataforma educativa y científica</span>
+        </div>
+        <div class="disc3-card top fragment" data-fragment-index="1">
+          <h4><span class="sq" style="background:var(--green)"></span>Docencia</h4>
+          <p>Aprendizaje activo y observación autónoma</p>
+        </div>
+        <div class="disc3-card bl fragment" data-fragment-index="2">
+          <h4><span class="sq" style="background:var(--blue-dark)"></span>Comunidad científica</h4>
+          <p>Registro, consulta y crecimiento</p>
+        </div>
+        <div class="disc3-card br fragment" data-fragment-index="3">
+          <h4><span class="sq" style="background:var(--ink-soft)"></span>Divulgación</h4>
+          <p>Patrimonio científico accesible</p>
+        </div>
       </div>
-      <div class="disc3-card top">
-        <h4><span class="sq" style="background:var(--green)"></span>Docencia</h4>
-        <p>Casos reales · aprendizaje activo · observación autónoma</p>
       </div>
-      <div class="disc3-card bl">
-        <h4><span class="sq" style="background:var(--blue)"></span>Conservación y acceso</h4>
-        <p>Menor manipulación · consulta remota · patrimonio accesible</p>
-      </div>
-      <div class="disc3-card br">
-        <h4><span class="sq" style="background:var(--blue-dark)"></span>Competencia digital en Biología</h4>
-        <p>Escaneado 3D · desarrollo web · comunicación científica</p>
-      </div>
-    </div>
-    <div class="disc3-caution">
-      <span class="tag">cautela</span>
-      <p>Los modelos 3D no sustituyen a las piezas originales: las complementan.</p>
     </div>
   </div>
 </section>
